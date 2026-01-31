@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventure & Action - SDM Disney</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables CSS améliorées pour une ambiance aventure et action */
+        :root {
+            --disney-blue: #0d47a1;
+            --disney-orange: #ff5722;
+            --disney-gold: #ffc107;
+            --disney-green: #388e3c;
+            --disney-teal: #0097a7;
+            --disney-red: #d32f2f;
+            --disney-light: #f5f5f5;
+            --disney-dark: #121212;
+            --magic-shadow: 0 0 15px rgba(255, 87, 34, 0.3);
+            --header-font: 'Poppins', sans-serif;
+            --body-font: 'Quicksand', sans-serif;
+            --magic-font: 'Dancing Script', cursive;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Reset et styles de base améliorés */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--body-font);
+            background: linear-gradient(135deg, #0c1a2d 0%, #1a2b3c 50%, #2c3e50 100%);
+            color: var(--disney-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeInBody 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInBody {
+            to { opacity: 1; }
+        }
+        
+        /* Effet de poussière magique en arrière-plan */
+        .magic-dust {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .dust-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: floatDust 15s infinite linear;
+        }
+        
+        @keyframes floatDust {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Effet d'étoiles scintillantes */
+        .twinkling-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* En-tête et navigation améliorés */
+        header {
+            background: rgba(13, 13, 46, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            height: 90px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            text-decoration: none;
+        }
+        
+        .logo-container:hover .adventure-hat {
+            animation: hatSpin 1s ease;
+        }
+        
+        @keyframes hatSpin {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .adventure-hat {
+            font-size: 42px;
+            color: var(--disney-orange);
+            position: relative;
+            animation: hatFloat 6s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 87, 34, 0.7));
+        }
+        
+        @keyframes hatFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(5px) rotate(5deg); }
+        }
+        
+        .site-title {
+            font-family: var(--magic-font);
+            font-size: 38px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--disney-orange), var(--disney-red), var(--disney-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .magic-sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 15px white;
+            animation: sparkle 2s infinite;
+            opacity: 0;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* Navigation avec menu déroulant des catégories amélioré */
+        .nav-container {
+            background: linear-gradient(90deg, var(--disney-green), var(--disney-blue));
+            padding: 0 5%;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--disney-gold), transparent);
+        }
+        
+        .nav-menu {
+            display: flex;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 18px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: block;
+            position: relative;
+            font-family: var(--header-font);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 4px;
+            background: var(--disney-orange);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+        
+        /* Menu déroulant des catégories amélioré */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(13, 13, 46, 0.95);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            min-width: 250px;
+            display: none;
+            z-index: 1001;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            border-top: none;
+        }
+        
+        .dropdown-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .dropdown-item {
+            padding: 15px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--disney-light);
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(255, 87, 34, 0.2);
+            padding-left: 35px;
+            color: white;
+        }
+        
+        .dropdown-item:hover::before {
+            content: '⚔';
+            position: absolute;
+            left: 15px;
+            color: var(--disney-gold);
+        }
+        
+        /* Menu utilisateur amélioré */
+        .user-menu-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .user-info:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--disney-green), var(--disney-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 0 15px rgba(56, 142, 60, 0.5);
+            border: 2px solid var(--disney-gold);
+        }
+        
+        /* Style Glass iOS pour le menu utilisateur */
+        .user-dropdown-menu {
+            position: absolute;
+            top: 85px;
+            right: 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+            min-width: 280px;
+            display: none;
+            z-index: 1002;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            padding: 15px;
+        }
+        
+        .user-dropdown-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .user-dropdown-menu ul {
+            list-style: none;
+        }
+        
+        .user-dropdown-menu li {
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+        
+        .user-dropdown-menu li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .user-dropdown-menu li:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .user-dropdown-menu i {
+            margin-right: 15px;
+            color: var(--disney-gold);
+            width: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .user-dropdown-menu span {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Section de bannière principale améliorée pour Aventure & Action */
+        .category-hero {
+            text-align: center;
+            padding: 120px 5% 80px;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 87, 34, 0.6) 0%, rgba(211, 47, 47, 0.4) 40%, transparent 70%),
+                        radial-gradient(circle at 70% 80%, rgba(56, 142, 60, 0.5) 0%, rgba(255, 193, 7, 0.3) 30%, transparent 60%),
+                        url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .category-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .category-hero h1 {
+            font-family: var(--header-font);
+            font-size: 72px;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7),
+                         0 0 30px rgba(255, 87, 34, 0.5),
+                         0 0 60px rgba(56, 142, 60, 0.3);
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        .category-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--disney-orange), transparent);
+        }
+        
+        .category-hero p {
+            font-size: 24px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 300;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+        
+        /* Section vidéos améliorée pour Aventure & Action */
+        .videos-section {
+            padding: 60px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 42px;
+            color: white;
+            font-family: var(--header-font);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5),
+                         0 0 20px rgba(255, 87, 34, 0.3);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::before, .section-title::after {
+            content: '⚔';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--disney-orange);
+            font-size: 24px;
+            opacity: 0.8;
+        }
+        
+        .section-title::before {
+            left: -50px;
+        }
+        
+        .section-title::after {
+            right: -50px;
+        }
+        
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 35px;
+        }
+        
+        .video-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .video-item:nth-child(1) { animation-delay: 0.3s; }
+        .video-item:nth-child(2) { animation-delay: 0.4s; }
+        .video-item:nth-child(3) { animation-delay: 0.5s; }
+        .video-item:nth-child(4) { animation-delay: 0.6s; }
+        .video-item:nth-child(5) { animation-delay: 0.7s; }
+        .video-item:nth-child(6) { animation-delay: 0.8s; }
+        .video-item:nth-child(7) { animation-delay: 0.9s; }
+        .video-item:nth-child(8) { animation-delay: 1.0s; }
+        
+        .video-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                        0 0 30px rgba(255, 87, 34, 0.2);
+            border-color: rgba(255, 87, 34, 0.3);
+        }
+        
+        .video-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-green), var(--disney-orange), var(--disney-gold));
+            z-index: 2;
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .video-item:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        /* Effet de lecture automatique au survol */
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+            z-index: 1;
+        }
+        
+        .video-item:hover .video-thumbnail::after {
+            opacity: 1;
+            content: '▶';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+        
+        .video-info {
+            padding: 25px;
+        }
+        
+        .video-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+            font-family: var(--header-font);
+            min-height: 60px;
+        }
+        
+        .video-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modal vidéo amélioré */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .video-modal.active {
+            display: flex;
+        }
+        
+        .video-modal-content {
+            width: 90%;
+            max-width: 1100px;
+            background: rgba(13, 13, 46, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+                        0 0 0 1px rgba(255, 193, 7, 0.1);
+            animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(60px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .video-modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-green), var(--disney-orange), var(--disney-gold));
+            z-index: 2;
+        }
+        
+        .video-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-modal-header h3 {
+            font-size: 24px;
+            color: white;
+            font-family: var(--header-font);
+        }
+        
+        .close-video-modal {
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-video-modal:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+        
+        .video-modal-body {
+            padding: 0;
+        }
+        
+        .video-modal-iframe-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-modal-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-modal-info {
+            padding: 25px 30px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-modal-info p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        
+        /* Boutons améliorés */
+        .btn {
+            padding: 16px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--header-font);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--disney-green), var(--disney-orange));
+            color: white;
+            box-shadow: 0 5px 20px rgba(56, 142, 60, 0.4);
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--disney-orange), var(--disney-green));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(56, 142, 60, 0.6);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 50px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+        
+        .btn-primary:hover::after {
+            left: 120%;
+        }
+        
+        /* Boutons de connexion et d'inscription améliorés */
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-login, .btn-signup {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--header-font);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-login {
+            background: transparent;
+            border: 2px solid var(--disney-orange);
+            color: var(--disney-orange);
+        }
+        
+        .btn-login:hover {
+            background: rgba(255, 87, 34, 0.1);
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .btn-signup {
+            background: linear-gradient(45deg, var(--disney-blue), var(--disney-teal));
+            border: 2px solid transparent;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 151, 167, 0.3);
+        }
+        
+        .btn-signup:hover {
+            background: linear-gradient(45deg, var(--disney-teal), var(--disney-blue));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 151, 167, 0.4);
+        }
+        
+        /* Modal de connexion amélioré */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal.active {
+            display: flex;
+            animation: modalFadeIn 0.4s ease-out;
+        }
+        
+        .modal-content {
+            background: rgba(13, 13, 46, 0.95);
+            border-radius: 25px;
+            width: 90%;
+            max-width: 550px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+                        0 0 0 1px rgba(255, 193, 7, 0.1);
+            animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-green), var(--disney-orange), var(--disney-gold));
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .modal-header h2 {
+            font-size: 32px;
+            color: white;
+            font-family: var(--header-font);
+            background: linear-gradient(45deg, var(--disney-orange), var(--disney-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .close-modal {
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-modal:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: var(--header-font);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            color: white;
+            font-family: var(--body-font);
+        }
+        
+        .form-group input:focus {
+            border-color: var(--disney-orange);
+            background: rgba(255, 255, 255, 0.12);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.2);
+        }
+        
+        /* Style pour les messages d'erreur */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Style pour le formulaire de basculement */
+        .form-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .form-switch a {
+            color: var(--disney-orange);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .form-switch a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Boutons de connexion sociale */
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--header-font);
+            border: 2px solid transparent;
+            font-size: 16px;
+        }
+        
+        .btn-google {
+            background: white;
+            color: #444;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-google:hover {
+            background: #f8f8f8;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-apple {
+            background: #000;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-apple:hover {
+            background: #222;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .social-btn i {
+            font-size: 20px;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .divider span {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+        
+        /* Pied de page amélioré */
+        footer {
+            background: rgba(13, 13, 46, 0.95);
+            color: white;
+            padding: 70px 5% 40px;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 193, 7, 0.2);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-green), var(--disney-orange), var(--disney-gold));
+        }
+        
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section {
+            position: relative;
+        }
+        
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--disney-orange);
+            font-family: var(--header-font);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--disney-orange), transparent);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            transition: all 0.3s;
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            position: relative;
+            padding-left: 0;
+            transition: all 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+            padding-left: 15px;
+        }
+        
+        .footer-section a:hover::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--disney-orange);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 15px;
+        }
+        
+        .footer-bottom p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .footer-bottom p::before, .footer-bottom p::after {
+            content: '⚔';
+            color: var(--disney-orange);
+            font-size: 18px;
+        }
+        
+        /* Points colorés décoratifs */
+        .decorative-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: floatDot 20s infinite linear;
+        }
+        
+        @keyframes floatDot {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); }
+        }
+        
+        /* Animation spéciale pour les aventures */
+        @keyframes adventureDust {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(50px) rotate(360deg); opacity: 0; }
+        }
+        
+        .adventure-dust {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .adventure-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 87, 34, 0.8);
+            box-shadow: 0 0 15px 3px rgba(255, 87, 34, 0.7);
+            animation: adventureDust 12s infinite linear;
+        }
+        
+        .mountain-decoration {
+            position: absolute;
+            bottom: 0;
+            right: 5%;
+            width: 300px;
+            height: 300px;
+            background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        /* Responsive amélioré */
+        @media (max-width: 1200px) {
+            .videos-container {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .category-hero h1 {
+                font-size: 62px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .videos-container {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            
+            .category-hero h1 {
+                font-size: 52px;
+            }
+            
+            .category-hero p {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 20px 5%;
+            }
+            
+            .user-menu-container {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                padding: 15px 20px;
+                font-size: 15px;
+            }
+            
+            .category-hero {
+                padding: 100px 5% 60px;
+            }
+            
+            .category-hero h1 {
+                font-size: 44px;
+            }
+            
+            .category-hero p {
+                font-size: 20px;
+            }
+            
+            .videos-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 25px;
+            }
+            
+            .modal-content {
+                padding: 40px 30px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .videos-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-hero h1 {
+                font-size: 38px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .section-title::before, .section-title::after {
+                display: none;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .btn-login, .btn-signup {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .video-modal-content {
+                width: 95%;
+                border-radius: 15px;
+            }
+            
+            .video-modal-header {
+                padding: 15px 20px;
+            }
+            
+            .video-modal-header h3 {
+                font-size: 20px;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Effet de poussière magique -->
+    <div class="magic-dust" id="magicDust"></div>
+    
+    <!-- Poussière d'aventure spéciale -->
+    <div class="adventure-dust" id="adventureDust"></div>
+    
+    <!-- Étoiles scintillantes -->
+    <div class="twinkling-stars" id="twinklingStars"></div>
+    
+    <!-- Points colorés décoratifs -->
+    <div class="decorative-dots" id="decorativeDots"></div>
+    
+    <!-- Montagne décorative -->
+    <div class="mountain-decoration"></div>
+    
+    <!-- En-tête avec logo et menu utilisateur -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <div class="adventure-hat">🏔️</div>
+                <h1 class="site-title">SDM Disney</h1>
+                <!-- Étincelles magiques -->
+                <div class="magic-sparkle" style="top: 10px; right: -5px; animation-delay: 0.2s;"></div>
+                <div class="magic-sparkle" style="bottom: 5px; left: 40px; animation-delay: 0.7s;"></div>
+                <div class="magic-sparkle" style="top: 30px; left: 10px; animation-delay: 1.3s;"></div>
+            </a>
+            
+            <div class="user-menu-container">
+                <!-- Boutons de connexion/inscription (visible quand non connecté) -->
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn-login" id="openLoginModal">Se connecter</button>
+                    <button class="btn-signup" id="openSignupModal">S'inscrire</button>
+                </div>
+                
+                <!-- Info utilisateur (visible quand connecté) -->
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span id="userName">Utilisateur</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                
+                <!-- Menu déroulant utilisateur style Glass iOS -->
+                <div class="user-dropdown-menu" id="userDropdown">
+                    <ul>
+                        <li onclick="navigateTo('profil.html')">
+                            <i class="fas fa-user"></i>
+                            <span>Mon profil</span>
+                        </li>
+                        <li onclick="navigateTo('favoris.html')">
+                            <i class="fas fa-heart"></i>
+                            <span>Favoris</span>
+                        </li>
+                        <li onclick="navigateTo('historique.html')">
+                            <i class="fas fa-history"></i>
+                            <span>Historique</span>
+                        </li>
+                        <li onclick="navigateTo('parametres.html')">
+                            <i class="fas fa-cog"></i>
+                            <span>Paramètres</span>
+                        </li>
+                        <li id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Déconnexion</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Barre de navigation avec menu déroulant des catégories -->
+        <div class="nav-container">
+            <nav class="nav-menu">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link active" id="categoriesDropdownToggle">Catégories <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 12px;"></i></a>
+                    <div class="dropdown-menu" id="categoriesDropdown">
+                        <a href="conte-fee.html" class="dropdown-item" data-category="conte">Conte de fée</a>
+                        <a href="aventure.html" class="dropdown-item active" data-category="aventure">Aventure&Action</a>
+                        <a href="enfants.html" class="dropdown-item" data-category="enfants">Education</a>
+                        <a href="univers.html" class="dropdown-item" data-category="univers">Univers</a> 
+                        <!-- <a href="famille.html" class="dropdown-item" data-category="famille">Famille</a> -->
+                    </div>
+                </div>
+            </nav>
+        </div>
+</header>
+
+<!-- Section de bannière pour Aventure & Action -->
+<section class="category-hero">
+    <h1>Aventure & Action</h1>
+    <p>Plongez au cœur de l'action et de l'aventure avec des histoires palpitantes, des héros courageux et des défis à surmonter. Découvrez une sélection des meilleurs dessin d'aventure&action où chaque instant est une nouvelle découverte.</p>
+    <button class="btn btn-primary" style="max-width: 280px;" id="watchTrailerBtn">Regarder la bande-annonce</button>
+</section>
+
+<!-- Section des vidéos -->
+<section class="videos-section">
+    <h2 class="section-title">Actions&aventure palpitantes</h2>
+    <div class="videos-container" id="videosContainer">
+        <!-- Les vidéos seront chargées par JavaScript -->
+    </div>
+</section>
+
+<!-- Modal vidéo -->
+<div class="video-modal" id="videoModal">
+    <div class="video-modal-content">
+        <div class="video-modal-header">
+            <h3 id="videoModalTitle">Titre de la vidéo</h3>
+            <span class="close-video-modal" id="closeVideoModal">&times;</span>
+        </div>
+        <div class="video-modal-body">
+            <div class="video-modal-iframe-container">
+                <div id="videoPlayerContainer"></div>
+            </div>
+            <div class="video-modal-info">
+                <p id="videoModalDescription">Description de la vidéo</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de connexion -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Connexion</h2>
+            <span class="close-modal" id="closeLoginModal">&times;</span>
+        </div>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" required>
+                <div class="error-message" id="loginEmailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Mot de passe</label>
+                <input type="password" id="loginPassword" required>
+                <div class="error-message" id="loginPasswordError"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+            
+            <div class="divider">
+                <span>Ou continuer avec</span>
+            </div>
+            
+            <div class="social-login">
+                <button type="button" class="social-btn btn-google" id="googleLoginBtn">
+                    <i class="fab fa-google"></i>
+                    Continuer avec Google
+                </button>
+                <button type="button" class="social-btn btn-apple" id="appleLoginBtn">
+                    <i class="fab fa-apple"></i>
+                    Continuer avec Apple
+                </button>
+            </div>
+            
+            <div class="form-switch">
+                Pas encore de compte ? <a href="#" id="switchToSignup">S'inscrire</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal d'inscription -->
+<div class="modal" id="signupModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Inscription</h2>
+            <span class="close-modal" id="closeSignupModal">&times;</span>
+        </div>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="signupName">Nom complet</label>
+                <input type="text" id="signupName" required>
+                <div class="error-message" id="signupNameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <input type="email" id="signupEmail" required>
+                <div class="error-message" id="signupEmailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Mot de passe</label>
+                <input type="password" id="signupPassword" required>
+                <div class="error-message" id="signupPasswordError"></div>
+            </div>
+            <div class="form-group">
+                <label for="signupConfirmPassword">Confirmer le mot de passe</label>
+                <input type="password" id="signupConfirmPassword" required>
+                <div class="error-message" id="signupConfirmPasswordError"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+            
+            <div class="divider">
+                <span>Ou s'inscrire avec</span>
+            </div>
+            
+            <div class="social-login">
+                <button type="button" class="social-btn btn-google" id="googleSignupBtn">
+                    <i class="fab fa-google"></i>
+                    S'inscrire avec Google
+                </button>
+                <button type="button" class="social-btn btn-apple" id="appleSignupBtn">
+                    <i class="fab fa-apple"></i>
+                    S'inscrire avec Apple
+                </button>
+            </div>
+            
+            <div class="form-switch">
+                Déjà un compte ? <a href="#" id="switchToLogin">Se connecter</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Pied de page -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>À propos de SDM Disney</h3>
+            <p>SDM Disney est une plateforme qui regroupe les meilleurs dessins animés pour toute la famille. Profitez de contenu adapté à tous les âges et tous les goûts.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Catégories</h3>
+            <ul>
+                <li><a href="conte-fee.html">Contes de fée</a></li>
+                <li><a href="aventure.html">Aventure&Action</a></li>
+                <li><a href="comedie.html">Comédie&Famille</a></li>
+                <li><a href="enfants.html">Education</a></li>
+                <!-- <li><a href="famille.html">Famille</a></li> -->
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: contact@sdmdisney.com</p>
+            <p>Téléphone: +33 1 23 45 67 89</p>
+            <p>Adresse: 123 Avenue Disney, 77000 Paris</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2023 SDM Disney. Tous droits réservés. Conçu avec ❤️ pour les familles</p>
+    </div>
+</footer>
+
+<script>
+    // Données des vidéos pour la catégorie "Aventure & Action"
+    const adventureVideos = [
+        {
+            id: "4_Qvkg_akP4",
+            title: "L'Aventure Spatiale-Dessin Animé complet",
+            description: "L'énergie vitale de la planète a disparu. Des héros partent dans l'espace à la recherche d'un minerai magique qui pourrait sauver leur monde avant qu'il ne soit trop tard.",
+            duration: "1:18:56",
+            year: "©2026",
+            platform: "youtube"
+        },
+        {
+            id: "xU4BUJktbLI",
+            title: "Danny Et Les Maxy-Monstres-Dessin Animé complet",
+            description: "Transféré dans un internat, un jeune homme de 15 ans ouvre accidentellement un portail qui libère des monstres d'une autre dimension.",
+            duration: "1:24:38",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "v8j2g2cf9JE",
+            title: "Sous L'Océan-Dessin Animé complet",
+            description: "Dans un futur englouti où les humains ont disparu, de courageux animaux marins partent dans une aventure drôle et dangereuse pour redonner vie aux océans.",
+            duration: "1:32:04",
+            year: "©2005",
+            platform: "youtube"
+        },
+        {
+            id: "-GUCrcuxO3w",
+            title: "La Grande Course-Dessin Animé complet",
+            description: "Des années après leur première course, un lièvre et une tortue relancent la rivalité avec leurs enfants, prêts à affronter une montagne dans une aventure pleine d'humour et de défis.",
+            duration: "1:12:56",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "rOCPwOtwyxY",
+            title: "Sacré Petit Frére",
+            description: "Une fée maladroite se retrouve piégée dans le monde des humains et doit retrouver le portail magique avant de se transformer en fleur.",
+            duration: "1:19:33",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "puGwBGsxizw",
+            title: "Un Bébé à Livrer",
+            description: "Deux amis s'occupent accidentellement d'un ourson. Ensemble, ils partent à l'aventure afin de livrer le bébé ours à ses parents.",
+            duration: "1:26:18",
+            year: "©2024",
+            platform: "youtube"
+        },
+        {
+            id: "B-ADY_nFKGA",
+            title: "Panique Sous L'Ocean",
+            description: "Un jeune dauphin découvre une arche magique qui exauce les souhaits. Lorsque des murènes l'utilisent pour devenir géantes et dominer la ville, il décide de les arrêter.",
+            duration: "1:19:23",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "VE6Lxqy9hq8",
+            title: "Bataille De Boule De Neiges",
+            description: "Des enfants se divisent en deux groupes pour jouer à la guerre avec des boules de neige. Un des groupes construit un château en neige, l'autre groupe ayant pour mission de le conquérir.",
+            duration: "1:20:27",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "_-dZerH7zGs",
+            title: "Le Royaume De Terracota",
+            description: "L'histoire fantastique de Jade et d'un guerrier nommé Magnus qui doivent faire équipe pour combattre les créatures qui continuent d'attaquer la ville souterraine..",
+            duration: "1:43:04",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "fCL2XyeQBJw",
+            title: "Un Instinct De Fauve-Dessin Animé Complet",
+            description: "Un concours dans un parc révolutionnaire vire au chaos lorsque les participants métamorphosés en bêtes sauvages deviennent incontrôlables.",
+            duration: "1:37:39",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "KruKK6Ki-us",
+            title: "Les Aventures De Bella-Dessin Animé Complet",
+            description: "Ella Bella découvre la magie de l'amitié quand un nouveau venu arrive en ville et qu'ils partent tous les deux à l'aventure pour retrouver Henry, son meilleur ami qui a disparu.",
+            duration: "1:10:59",
+            year: "©2023",
+            platform: "youtube"
+        },
+        {
+            id: "Vzyt2LmzEsw",
+            title: "Les Aventures De Shad l'Elévant-Dessin Animé Complet",
+            description: "Bien qu'il soit le fils du roi, shadphant, un éléphant maladroit, déçoit tous les animaux de la jungle. Mais lorsque sa forêt est menacée par des chasseurs il va devoir faire face à ses peurs pour sauver le royaume.",
+            duration: "1:16:15",
+            year: "©2023",
+            platform: "youtube"
+        },
+        {
+            id: "WRJJx-JZtzM",
+            title: "Kung Fu Panda 3",
+            description: "Kung Fu Panda 3-Dessin Animé Complet",
+            duration: "1:42:18",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "yYyZQ4ceZkc",
+            title: "Missions Planéte Panda-Dessin Animé Complet",
+            description: "Une armée de pandas très malicieux décide de contrer, envers et contre tout, une bande d'extraterrestres à la recherche d'un panda doté de pouvoirs extraordinaires",
+            duration: "1:17:29",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id:"EsaU12fSaKs",
+            title: "Herrissons Et Compagnie-Dessin Animé Complet",
+            description: "Un hérisson va devoir s'unir avec tous les animaux de la forêt pour contrer un grand danger qui pèse sur eux...",
+            duration: "1:27:03",
+            year: "©2018",
+            platform: "youtube"
+        },
+        {
+            id: "OAofpDiRrd8",
+            title: "Le Prince De Chine-Dessin Animé Complet",
+            description: "Une soldate rebelle rêve de partir à la découverte du monde et de servir l'armée chinoise et son Prince.",
+            duration: "1:24:26",
+            year: "©2024",
+            platform: "youtube"
+        },
+        {
+            id: "XwhOU3yHzFE",
+            title: "Gamba L'Aventurier",
+            description: "Gamba est un rat courageux avec un goût prononcé pour l'aventure. Un jour, il décide de partir à la découverte de l'océan avec son ami Mathéo... ",
+            duration: "1:28:17",
+            year: "©2022",
+            platform: "youtube"
+        },
+        {
+            id: "-ZFmZOauijY",
+            title: "Kirikou Et La Sorciére",
+            description: "Le minuscule Kirikou naît dans un village d'Afrique sur lequel la sorcière Karaba, entourée de ses redoutables fétiches, a jeté un terrible sort : la source est asséchée, les villageois rançonnés, les hommes sont kidnappés et disparaissent mystérieusement.",
+            duration: "1:10:50",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "9gGL_nCTZKw",
+            title: "Les Stars De La Ferme-Dessin Animé Complet",
+            description: " Un coq chanteur, humilié après avoir échoué à faire lever le soleil, doit retrouver confiance pour sauver le monde d'un hibou maléfique.",
+            duration: "1:14:09",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "7geAzZXj6JM",
+            title: "Les supers Animaux-Dessin Animé Complet",
+            description: " Maggie est une Wombat réputée pour son fort caractère. Un jour, elle sauve un jeune super-héro en herbe et devient, malgré elle, la nouvelle héroïne de la ville. ",
+            duration: "1:18:54",
+            year: "©2024",
+            platform: "youtube"
+        },
+        {
+            id: "zYPK9x5aSYA",
+            title: "Les Aventures Du Numero 9-Dessin Animé Complet",
+            description: "Un savant crée des poupées intelligentes . Numéro 9, la dernière poupée créée, va partir à la recherche de ses amis. ",
+            duration: "1:19:19",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "YX7tgJ00ryE",
+            title: "Wheely, le Petit Taxi -Dessin Animé Complet",
+            description: "Wheely, un sympathique taxi jaune qui a des allures de voiture de sport, se mesure à un camion de 18 roues qui s'en prend à des véhicules de luxe. ",
+            duration: "1:29:47",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "b_4E1qaun-Q",
+            title: "Le Petit Mécanicien-Dessin Animé Complet",
+            description: " Une grande aventure glacée commence ! Des héros rigolos, des courses folles et des surprises à chaque virage… Prêts pour l'action ?",
+            duration: "1:08:50",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "R3AutzJmIGc",
+            title: " La Guerrière du Futur-Dessin Animé Complet",
+            description: "Plongez dans un monde futuriste palpitant avec La Guerrière du Futur-Dessin Animé Complet",
+            duration: "1:41:47",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "zWotPv2BtRU",
+            title: "Mission : Cyborg Destruction-Dessin Animé Complet",
+            description: "Dans un Japon ravagé par les conflits, un groupe de réfugiés se soulève sous le nom des Onze Individuels. Une unité d'élite est chargée d'enquêter sur leurs attaques mystérieuses",
+            duration: "1:41:29",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "rUgpve1aiuw",
+            title: "L'âge de glace 3 Le temps des dinosaures-Dessin Animé Complet",
+            description: "L'âge de glace 3",
+            duration: "1:34:03",
+            year: "©2022",
+            platform: "youtube"
+        },
+        {
+            id: "3eaGMiPLrKE",
+            title: "Les Boonie Bears Super Héroïques -Dessin Animé Complet",
+            description: "Après la chute d'une mystérieuse météorite en pleine forêt, un des Boonie Bears fusionne accidentellement avec elle et acquiert de nouveaux pouvoirs. ",
+            duration: "1:37:02",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "NMx5zpsxfbU",
+            title: "Les Simpson-Dessin Animé Complet",
+            description: "Dans cette vidéo, je te plonge dans Les Simpson, le film : pourquoi ce film culte sorti en 2007 reste-t-il encore aussi drôle et percutant aujourd'hui ?",
+            duration: "1:24:50",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "RenoAR-zMJA",
+            title: "Le Monstre d'Hawaï-Dessin Animé Complet ",
+            description: "Après avoir déchaîné un monstre mythique sur les îles hawaïennes, trois jeunes amis doivent s'inspirer des légendes locales et de leurs ancêtres pour rétablir la paix dans les îles.",
+            duration: "1:11:34",
+            year: "©2022",
+            platform: "youtube"
+        },
+        {
+            id: "EswzCLWqXAY",
+            title: "Les Griffes du Héros-Dessin Animé Complet",
+            description: "Matthew, 16 ans, hérite de pouvoirs surnaturels qu'il doit utiliser pour vaincre un ancien mal connu sous le nom de Windigo et sauver ainsi la planète.",
+            duration: "3:57:36",
+            year: "©2022",
+            platform: "youtube"
+        },
+        {
+            id: "OklqxMkG5cI",
+            title: "La Ligue des Super-Vilains-Dessin Animé Complet",
+            description: "Dans un monde de super-méchants, un jeune rêveur et son mentor maladroit doivent devenir des héros malgré eux après avoir volé par accident une arme très dangereuse.",
+            duration: "1:15:49",
+            year: "©2025",
+            platform: "youtube"
+        },
+        {
+            id: "MIusljsbiGM",
+            title: "Dessin Anime complet",
+            description: "???????????????????????",
+            duration: "1:27:51",
+            year: "©2025",
+            platform: "youtube"
+        },
+        // {
+        //     id: "x8gcfds",//https://dai.ly/x8gcfds
+        //     title: "Film Mon ninja et moi 2 ",
+        //     description: "",
+        //     duration: "1:21:30",
+        //     year: "©2025",
+        //     platform: "dolymotion"
+        // },
+        {
+            id: "x8g1et8",//https://dai.ly/x8g1et8
+            title: " Scrooge, Un (mé)chant de Noël",
+            description: "  ",
+            duration: "1:35:47",
+            year: "©2025",
+            platform: "dailymotion"
+        },
+          {
+            id: "x91ma08",//https://dai.ly/x91ma08
+            title: "Les Protecteurs d'Everell ",
+            description: " Quatre enfants trouvent un ordinateur portable qui les projette à l'intérieur d'un jeu vidéo: ils découvrent le monde magique d'Everell, dans lequel ils bénéficient de superpouvoirs. ",
+            duration: "1:34:17",
+            year: "©2025",
+            platform: "dailymotion"
+        },
+          {
+            id: "x8pamd7",//https://dai.ly/x8pamd7
+            title: " Inspecteur Gadget et le Dragon Préhistorique ",
+            description: " L'Inspecteur Gadget doit enquêter sur le vol de l'oeuf préhistorique d'un énorme lézard ailé ! ",
+            duration: "1:03:12",
+            year: "©2025",
+            platform: "dailymotion"
+        },
+          {
+            id: "x9pae0o",//https://dai.ly/x9pae0o
+            title: " Kirikou",
+            description: " Découvre l’intégrale magique de Kirikou ",
+            duration: "3:34:05",
+            year: "©2025",
+            platform: "dailymotion"
+        },
+          {
+            id: "x9yuwtu",//https://dai.ly/x9yuwtu
+            title: "Johnny Puff et sa Bande ",
+            description: " Un groupe de petits héros part en mission secrète pour sauver son village des plans glacés d’un redoutable ennemi décidé à tout geler. ",
+            duration: "1:27:55",
+            year: "©2025",
+            platform: "dailymotion"
+        },
+          {
+            id: "",
+            title: " ",
+            description: "  ",
+            duration: "1:00:00",
+            year: "©2025",
+            platform: "dailymotion"
+        },
+         {
+            id: "",//https://dai.ly/x8z1z24
+            title: "Le Prédateur du Désert",
+            description: "Blinky Bill est un petit koala à l'imagination débordante. Aventurier dans l'âme, il souhaite fuir le village d'Aboribrousse pour retrouver son père.",
+            duration: "1:19:17",
+            year: "©2025",
+            platform: "dalimotion"
+        },
+
+
+    ];
+
+    // Variables globales
+    let currentUser = null;
+
+    // Initialisation lorsque la page est chargée
+    document.addEventListener('DOMContentLoaded', function() {
+        // Créer les effets visuels
+        createMagicDust();
+        createAdventureDust();
+        createTwinklingStars();
+        createDecorativeDots();
+        
+        // Charger les vidéos
+        loadVideos();
+        
+        // Configurer les interactions
+        setupInteractions();
+        
+        // Configurer l'authentification
+        setupAuthentication();
+        
+        // Configurer la modal vidéo
+        setupVideoModal();
+        
+        // Vérifier si un utilisateur est déjà connecté (depuis localStorage)
+        checkLoggedInUser();
+        
+        // Précharger les images pour une meilleure fluidité
+        preloadImages();
+    });
+
+    // Vérifier si un utilisateur est connecté dans localStorage
+    function checkLoggedInUser() {
+        const savedUser = localStorage.getItem('sdmDisneyUser');
+        if (savedUser) {
+            currentUser = JSON.parse(savedUser);
+            updateUserInterface();
+            showNotification(`Bon retour ${currentUser.displayName} !`, 'success');
+        }
+    }
+
+    // Créer la poussière magique en arrière-plan
+    function createMagicDust() {
+        const container = document.getElementById('magicDust');
+        const particleCount = 150;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('dust-particle');
+            
+            const size = Math.random() * 5 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            particle.style.animationDelay = `${Math.random() * 15}s`;
+            particle.style.animationDuration = `${10 + Math.random() * 20}s`;
+            
+            container.appendChild(particle);
+        }
+    }
+
+    // Créer la poussière d'aventure spéciale
+    function createAdventureDust() {
+        const container = document.getElementById('adventureDust');
+        const particleCount = 80;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('adventure-particle');
+            
+            const size = Math.random() * 8 + 3;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            const hue = 20 + Math.random() * 20;
+            particle.style.backgroundColor = `hsl(${hue}, 100%, 60%)`;
+            particle.style.boxShadow = `0 0 15px 3px hsl(${hue}, 100%, 60%)`;
+            
+            particle.style.animationDelay = `${Math.random() * 12}s`;
+            particle.style.animationDuration = `${8 + Math.random() * 16}s`;
+            
+            container.appendChild(particle);
+        }
+    }
+
+    // Créer les étoiles scintillantes
+    function createTwinklingStars() {
+        const container = document.getElementById('twinklingStars');
+        const starCount = 100;
+        
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            star.style.animationDelay = `${Math.random() * 3}s`;
+            star.style.animationDuration = `${1 + Math.random() * 4}s`;
+            
+            container.appendChild(star);
+        }
+    }
+
+    // Créer les points colorés décoratifs
+    function createDecorativeDots() {
+        const container = document.getElementById('decorativeDots');
+        const dotCount = 80;
+        const colors = ['#3498db', '#2ecc71', '#f39c12', '#e74c3c', '#9b59b6', '#1abc9c'];
+        
+        for (let i = 0; i < dotCount; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            dot.style.backgroundColor = color;
+            dot.style.boxShadow = `0 0 10px ${color}`;
+            
+            const size = Math.random() * 10 + 3;
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            dot.style.left = `${Math.random() * 100}%`;
+            dot.style.top = `${Math.random() * 100}%`;
+            
+            dot.style.animationDelay = `${Math.random() * 20}s`;
+            dot.style.animationDuration = `${15 + Math.random() * 25}s`;
+            
+            container.appendChild(dot);
+        }
+    }
+
+    // Précharger les images pour une meilleure fluidité
+    function preloadImages() {
+        const imageUrls = [
+            'https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80',
+            'https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+        ];
+        
+        imageUrls.forEach(url => {
+            const img = new Image();
+            img.src = url;
+        });
+    }
+
+    // Obtenir l'URL de la miniature en fonction de la plateforme
+    function getThumbnailUrl(video) {
+        if (video.platform === 'dailymotion') {
+            return `https://www.dailymotion.com/thumbnail/video/${video.id}`;
+        } else {
+            // YouTube par défaut
+            return `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+        }
+    }
+
+    // Obtenir l'URL d'embed en fonction de la plateforme
+    function getEmbedUrl(video) {
+        if (video.platform === 'dailymotion') {
+            return `https://www.dailymotion.com/embed/video/${video.id}?autoplay=1&controls=1&ui-info=0`;
+        } else {
+            // YouTube par défaut
+            return `https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0`;
+        }
+    }
+
+    // Charger les vidéos
+    function loadVideos() {
+        const container = document.getElementById('videosContainer');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        adventureVideos.forEach((video, index) => {
+            const videoItem = document.createElement('div');
+            videoItem.className = 'video-item';
+            videoItem.setAttribute('data-video-id', video.id);
+            videoItem.setAttribute('data-video-title', video.title);
+            videoItem.setAttribute('data-video-description', video.description);
+            videoItem.setAttribute('data-platform', video.platform || 'youtube');
+            videoItem.style.animationDelay = `${index * 0.1}s`;
+            
+            const thumbnailUrl = getThumbnailUrl(video);
+            
+            videoItem.innerHTML = `
+                <div class="video-thumbnail">
+                    <img src="${thumbnailUrl}" alt="${video.title}" loading="lazy">
+                </div>
+                <div class="video-info">
+                    <h3>${video.title}</h3>
+                    <p>${video.description}</p>
+                    <div class="video-meta">
+                        <span><i class="far fa-clock"></i> ${video.duration}</span>
+                        <span><i class="far fa-calendar"></i> ${video.year}</span>
+                        <span><i class="fas fa-video"></i> ${video.platform === 'dailymotion' ? 'Dailymotion' : 'YouTube'}</span>
+                    </div>
+                </div>
+            `;
+            
+            videoItem.addEventListener('click', function() {
+                openVideoModal(video.id, video.title, video.description, video.platform || 'youtube');
+            });
+            
+            container.appendChild(videoItem);
+        });
+    }
+
+    // Configurer les interactions
+    function setupInteractions() {
+        // Gérer le bouton "Regarder la bande-annonce"
+        const watchTrailerBtn = document.getElementById('watchTrailerBtn');
+        if (watchTrailerBtn) {
+            watchTrailerBtn.addEventListener('click', function() {
+                openVideoModal(adventureVideos[0].id, adventureVideos[0].title, adventureVideos[0].description, adventureVideos[0].platform || 'youtube');
+            });
+        }
+        
+        // Gérer le menu déroulant des catégories
+        const categoriesDropdownToggle = document.getElementById('categoriesDropdownToggle');
+        const categoriesDropdown = document.getElementById('categoriesDropdown');
+        
+        if (categoriesDropdownToggle) {
+            categoriesDropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                categoriesDropdown.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!categoriesDropdownToggle.contains(e.target) && !categoriesDropdown.contains(e.target)) {
+                    categoriesDropdown.classList.remove('active');
+                }
+            });
+        }
+    }
+
+    // Configurer la modal vidéo
+    function setupVideoModal() {
+        const videoModal = document.getElementById('videoModal');
+        const closeVideoModal = document.getElementById('closeVideoModal');
+        
+        if (closeVideoModal) {
+            closeVideoModal.addEventListener('click', function() {
+                closeVideoModalFunc();
+            });
+        }
+        
+        if (videoModal) {
+            videoModal.addEventListener('click', function(e) {
+                if (e.target === videoModal) {
+                    closeVideoModalFunc();
+                }
+            });
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                closeVideoModalFunc();
+            }
+        });
+    }
+
+    // Ouvrir la modal vidéo
+    function openVideoModal(videoId, title, description, platform = 'youtube') {
+        const videoModal = document.getElementById('videoModal');
+        const videoPlayerContainer = document.getElementById('videoPlayerContainer');
+        const videoModalTitle = document.getElementById('videoModalTitle');
+        const videoModalDescription = document.getElementById('videoModalDescription');
+        
+        if (!videoModal || !videoPlayerContainer) return;
+        
+        videoModalTitle.textContent = title;
+        videoModalDescription.textContent = description;
+        
+        // Vider le conteneur précédent
+        videoPlayerContainer.innerHTML = '';
+        
+        // Créer l'iframe en fonction de la plateforme
+        let embedUrl;
+        if (platform === 'dailymotion') {
+            embedUrl = `https://www.dailymotion.com/embed/video/${videoId}?autoplay=1&controls=1&ui-info=0`;
+        } else {
+            embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0`;
+        }
+        
+        const iframe = document.createElement('iframe');
+        iframe.src = embedUrl;
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', 'true');
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.position = 'absolute';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        iframe.style.border = 'none';
+        
+        videoPlayerContainer.appendChild(iframe);
+        
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Fermer la modal vidéo
+    function closeVideoModalFunc() {
+        const videoModal = document.getElementById('videoModal');
+        const videoPlayerContainer = document.getElementById('videoPlayerContainer');
+        
+        if (!videoModal || !videoPlayerContainer) return;
+        
+        videoModal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Arrêter la vidéo en vidant le conteneur
+        videoPlayerContainer.innerHTML = '';
+    }
+
+    // Configurer l'authentification
+    function setupAuthentication() {
+        // Éléments modaux
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const openLoginModalBtn = document.getElementById('openLoginModal');
+        const openSignupModalBtn = document.getElementById('openSignupModal');
+        const closeLoginModalBtn = document.getElementById('closeLoginModal');
+        const closeSignupModalBtn = document.getElementById('closeSignupModal');
+        const switchToSignupLink = document.getElementById('switchToSignup');
+        const switchToLoginLink = document.getElementById('switchToLogin');
+        
+        // Ouvrir modaux
+        if (openLoginModalBtn) {
+            openLoginModalBtn.addEventListener('click', () => {
+                loginModal.classList.add('active');
+                signupModal.classList.remove('active');
+            });
+        }
+        
+        if (openSignupModalBtn) {
+            openSignupModalBtn.addEventListener('click', () => {
+                signupModal.classList.add('active');
+                loginModal.classList.remove('active');
+            });
+        }
+        
+        // Fermer modaux
+        if (closeLoginModalBtn) {
+            closeLoginModalBtn.addEventListener('click', () => {
+                loginModal.classList.remove('active');
+            });
+        }
+        
+        if (closeSignupModalBtn) {
+            closeSignupModalBtn.addEventListener('click', () => {
+                signupModal.classList.remove('active');
+            });
+        }
+        
+        // Basculer entre modaux
+        if (switchToSignupLink) {
+            switchToSignupLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginModal.classList.remove('active');
+                signupModal.classList.add('active');
+            });
+        }
+        
+        if (switchToLoginLink) {
+            switchToLoginLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                signupModal.classList.remove('active');
+                loginModal.classList.add('active');
+            });
+        }
+        
+        // Fonction pour valider l'email
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Gestion de l'inscription
+        const signupForm = document.getElementById('signupForm');
+        if (signupForm) {
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('signupName').value;
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                const confirmPassword = document.getElementById('signupConfirmPassword').value;
+                
+                // Validation côté client
+                if (!isValidEmail(email)) {
+                    showNotification('Veuillez entrer une adresse email valide', 'error');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    showNotification('Les mots de passe ne correspondent pas', 'error');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    showNotification('Le mot de passe doit contenir au moins 6 caractères', 'error');
+                    return;
+                }
+                
+                // Créer l'utilisateur (simulation)
+                const userId = 'user_' + Date.now();
+                const user = {
+                    uid: userId,
+                    email: email,
+                    displayName: name,
+                    createdAt: new Date().toISOString()
+                };
+                
+                // Sauvegarder l'utilisateur dans localStorage
+                localStorage.setItem('sdmDisneyUser', JSON.stringify(user));
+                
+                // Mettre à jour l'interface
+                currentUser = user;
+                updateUserInterface();
+                
+                // Fermer le modal et réinitialiser le formulaire
+                signupModal.classList.remove('active');
+                signupForm.reset();
+                
+                showNotification('Compte créé avec succès !', 'success');
+            });
+        }
+        
+        // Gestion de la connexion
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Vérifier les identifiants (simulation)
+                const savedUser = localStorage.getItem('sdmDisneyUser');
+                
+                if (savedUser) {
+                    const user = JSON.parse(savedUser);
+                    
+                    // Simulation de vérification
+                    if (user.email === email) {
+                        // Connexion réussie
+                        currentUser = user;
+                        updateUserInterface();
+                        
+                        loginModal.classList.remove('active');
+                        loginForm.reset();
+                        
+                        showNotification('Connexion réussie !', 'success');
+                    } else {
+                        showNotification('Email ou mot de passe incorrect', 'error');
+                    }
+                } else {
+                    // Premier utilisateur - création automatique
+                    const userId = 'user_' + Date.now();
+                    const user = {
+                        uid: userId,
+                        email: email,
+                        displayName: email.split('@')[0],
+                        createdAt: new Date().toISOString()
+                    };
+                    
+                    localStorage.setItem('sdmDisneyUser', JSON.stringify(user));
+                    currentUser = user;
+                    updateUserInterface();
+                    
+                    loginModal.classList.remove('active');
+                    loginForm.reset();
+                    
+                    showNotification('Compte créé et connexion réussie !', 'success');
+                }
+            });
+        }
+        
+        // Gestion de la déconnexion
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                // Supprimer l'utilisateur du localStorage
+                localStorage.removeItem('sdmDisneyUser');
+                currentUser = null;
+                updateUserInterface();
+                
+                showNotification('Déconnexion réussie', 'info');
+                const userDropdown = document.getElementById('userDropdown');
+                if (userDropdown) {
+                    userDropdown.classList.remove('active');
+                }
+            });
+        }
+        
+        // Gestion du menu déroulant utilisateur
+        const userInfo = document.getElementById('userInfo');
+        const userDropdown = document.getElementById('userDropdown');
+        
+        if (userInfo) {
+            userInfo.addEventListener('click', () => {
+                userDropdown.classList.toggle('active');
+            });
+            
+            // Fermer le menu déroulant en cliquant à l'extérieur
+            window.addEventListener('click', (e) => {
+                if (!userInfo.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.remove('active');
+                }
+            });
+        }
+        
+        // Navigation vers les pages
+        window.navigateTo = function(page) {
+            if (currentUser) {
+                window.location.href = page;
+            } else {
+                showNotification('Veuillez vous connecter pour accéder à cette page.', 'info');
+                document.getElementById('loginModal').classList.add('active');
+            }
+        };
+        
+        // Fermer modaux en cliquant à l'extérieur
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+            }
+            if (e.target === signupModal) {
+                signupModal.classList.remove('active');
+            }
+        });
+    }
+
+    // Mettre à jour l'interface utilisateur en fonction de l'état de connexion
+    function updateUserInterface() {
+        const authButtons = document.getElementById('authButtons');
+        const userInfo = document.getElementById('userInfo');
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        
+        if (currentUser && userInfo) {
+            // Afficher les informations utilisateur
+            authButtons.style.display = 'none';
+            userInfo.style.display = 'flex';
+            
+            // Mettre à jour le nom et l'avatar
+            userName.textContent = currentUser.displayName;
+            
+            if (currentUser.photoURL) {
+                userAvatar.innerHTML = `<img src="${currentUser.photoURL}" alt="${currentUser.displayName}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+            } else {
+                userAvatar.textContent = currentUser.displayName.charAt(0).toUpperCase();
+                
+                // Ajouter une couleur d'avatar basée sur le nom
+                const colors = ['#388e3c', '#0d47a1', '#ff5722', '#0097a7', '#d32f2f'];
+                const colorIndex = currentUser.displayName.length % colors.length;
+                userAvatar.style.background = `linear-gradient(135deg, ${colors[colorIndex]}, ${colors[(colorIndex + 1) % colors.length]})`;
+            }
+        } else if (authButtons) {
+            // Afficher les boutons d'authentification
+            authButtons.style.display = 'flex';
+            if (userInfo) userInfo.style.display = 'none';
+        }
+    }
+
+    // Afficher une notification
+    function showNotification(message, type) {
+        // Créer l'élément de notification
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        
+        // Styles de la notification
+        notification.style.position = 'fixed';
+        notification.style.top = '30px';
+        notification.style.right = '30px';
+        notification.style.padding = '15px 25px';
+        notification.style.borderRadius = '10px';
+        notification.style.color = 'white';
+        notification.style.fontWeight = '600';
+        notification.style.zIndex = '9999';
+        notification.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+        notification.style.animation = 'slideInRight 0.3s ease-out';
+        
+        // Couleur selon le type
+        if (type === 'success') {
+            notification.style.background = 'linear-gradient(45deg, #2ecc71, #27ae60)';
+            notification.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+        } else if (type === 'error') {
+            notification.style.background = 'linear-gradient(45deg, #e74c3c, #c0392b)';
+            notification.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+        } else {
+            notification.style.background = 'linear-gradient(45deg, #3498db, #2980b9)';
+            notification.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+        }
+        
+        // Ajouter au document
+        document.body.appendChild(notification);
+        
+        // Supprimer après 5 secondes
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.3s ease-out';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    document.body.removeChild(notification);
+                }
+            }, 300);
+        }, 5000);
+        
+        // Ajouter les keyframes pour l'animation
+        if (!document.querySelector('#notification-styles')) {
+            const style = document.createElement('style');
+            style.id = 'notification-styles';
+            style.textContent = `
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOutRight {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+</script>
+</body>
+</html>

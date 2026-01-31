@@ -1,0 +1,2610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Univers - SDM Disney</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables CSS améliorées pour une ambiance magique Disney */
+        :root {
+            --disney-blue: #0d47a1;
+            --disney-magenta: #e91e63;
+            --disney-gold: #ffc107;
+            --disney-purple: #7b1fa2;
+            --disney-teal: #0097a7;
+            --disney-red: #d32f2f;
+            --disney-light: #f5f5f5;
+            --disney-dark: #121212;
+            --magic-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
+            --header-font: 'Poppins', sans-serif;
+            --body-font: 'Quicksand', sans-serif;
+            --magic-font: 'Dancing Script', cursive;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Reset et styles de base améliorés */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--body-font);
+            background: linear-gradient(135deg, #0c1027 0%, #1a1f4e 50%, #2a2f6c 100%);
+            color: var(--disney-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeInBody 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInBody {
+            to { opacity: 1; }
+        }
+        
+        /* Effet de galaxies en arrière-plan */
+        .galaxy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .star-cluster {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.9);
+            animation: twinkle 3s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* Effet de nébuleuse */
+        .nebula {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            pointer-events: none;
+            background: radial-gradient(circle at 20% 30%, rgba(123, 31, 162, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(13, 71, 161, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(233, 30, 99, 0.1) 0%, transparent 50%);
+        }
+        
+        /* En-tête et navigation améliorés */
+        header {
+            background: rgba(13, 13, 46, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            height: 90px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            text-decoration: none;
+        }
+        
+        .logo-container:hover .universe-icon {
+            animation: spinPlanet 2s linear infinite;
+        }
+        
+        @keyframes spinPlanet {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .universe-icon {
+            font-size: 42px;
+            color: var(--disney-teal);
+            position: relative;
+            animation: floatInSpace 8s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(0, 151, 167, 0.7));
+        }
+        
+        @keyframes floatInSpace {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-10deg); }
+            75% { transform: translateY(5px) rotate(10deg); }
+        }
+        
+        .site-title {
+            font-family: var(--magic-font);
+            font-size: 38px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--disney-teal), var(--disney-blue), var(--disney-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .magic-sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 15px white;
+            animation: sparkle 2s infinite;
+            opacity: 0;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* Navigation avec menu déroulant des catégories amélioré */
+        .nav-container {
+            background: linear-gradient(90deg, var(--disney-blue), var(--disney-teal));
+            padding: 0 5%;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--disney-gold), transparent);
+        }
+        
+        .nav-menu {
+            display: flex;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 18px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: block;
+            position: relative;
+            font-family: var(--header-font);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 4px;
+            background: var(--disney-gold);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+        
+        /* Menu déroulant des catégories amélioré */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(13, 13, 46, 0.95);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            min-width: 250px;
+            display: none;
+            z-index: 1001;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            border-top: none;
+        }
+        
+        .dropdown-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .dropdown-item {
+            padding: 15px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--disney-light);
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(0, 151, 167, 0.2);
+            padding-left: 35px;
+            color: white;
+        }
+        
+        .dropdown-item:hover::before {
+            content: '✦';
+            position: absolute;
+            left: 15px;
+            color: var(--disney-gold);
+        }
+        
+        /* Menu utilisateur amélioré */
+        .user-menu-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .user-info:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--disney-blue), var(--disney-teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 0 15px rgba(0, 151, 167, 0.5);
+            border: 2px solid var(--disney-gold);
+        }
+        
+        /* Style Glass iOS pour le menu utilisateur */
+        .user-dropdown-menu {
+            position: absolute;
+            top: 85px;
+            right: 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+            min-width: 280px;
+            display: none;
+            z-index: 1002;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            padding: 15px;
+        }
+        
+        .user-dropdown-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .user-dropdown-menu ul {
+            list-style: none;
+        }
+        
+        .user-dropdown-menu li {
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+        
+        .user-dropdown-menu li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .user-dropdown-menu li:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .user-dropdown-menu i {
+            margin-right: 15px;
+            color: var(--disney-gold);
+            width: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .user-dropdown-menu span {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Section de bannière principale améliorée pour Univers */
+        .category-hero {
+            text-align: center;
+            padding: 120px 5% 80px;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 151, 167, 0.6) 0%, rgba(13, 71, 161, 0.4) 40%, transparent 70%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 193, 7, 0.5) 0%, rgba(123, 31, 162, 0.3) 30%, transparent 60%),
+                        url('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .category-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .category-hero h1 {
+            font-family: var(--magic-font);
+            font-size: 72px;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7),
+                         0 0 30px rgba(0, 151, 167, 0.5),
+                         0 0 60px rgba(13, 71, 161, 0.3);
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        .category-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--disney-gold), transparent);
+        }
+        
+        .category-hero p {
+            font-size: 24px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 300;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+        
+        /* Section univers */
+        .universes-section {
+            padding: 60px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 42px;
+            color: white;
+            font-family: var(--header-font);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5),
+                         0 0 20px rgba(0, 151, 167, 0.3);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::before, .section-title::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--disney-gold);
+            font-size: 24px;
+            opacity: 0.8;
+        }
+        
+        .section-title::before {
+            left: -50px;
+        }
+        
+        .section-title::after {
+            right: -50px;
+        }
+        
+        .universe-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 35px;
+            margin-bottom: 80px;
+        }
+        
+        .universe-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .universe-item:nth-child(1) { animation-delay: 0.3s; }
+        .universe-item:nth-child(2) { animation-delay: 0.4s; }
+        .universe-item:nth-child(3) { animation-delay: 0.5s; }
+        .universe-item:nth-child(4) { animation-delay: 0.6s; }
+        .universe-item:nth-child(5) { animation-delay: 0.7s; }
+        .universe-item:nth-child(6) { animation-delay: 0.8s; }
+        .universe-item:nth-child(7) { animation-delay: 0.9s; }
+        .universe-item:nth-child(8) { animation-delay: 1.0s; }
+        
+        .universe-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                        0 0 30px rgba(0, 151, 167, 0.2);
+            border-color: rgba(0, 151, 167, 0.3);
+        }
+        
+        .universe-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-blue), var(--disney-teal), var(--disney-gold));
+            z-index: 2;
+        }
+        
+        .universe-thumbnail {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .universe-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .universe-item:hover .universe-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        .universe-info {
+            padding: 25px;
+        }
+        
+        .universe-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+            font-family: var(--header-font);
+            min-height: 60px;
+        }
+        
+        .universe-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .universe-meta {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Boutons améliorés */
+        .btn {
+            padding: 16px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--header-font);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--disney-blue), var(--disney-teal));
+            color: white;
+            box-shadow: 0 5px 20px rgba(0, 151, 167, 0.4);
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--disney-teal), var(--disney-blue));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 151, 167, 0.6);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 50px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+        
+        .btn-primary:hover::after {
+            left: 120%;
+        }
+        
+        /* Boutons de connexion et d'inscription améliorés */
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-login, .btn-signup {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--header-font);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-login {
+            background: transparent;
+            border: 2px solid var(--disney-gold);
+            color: var(--disney-gold);
+        }
+        
+        .btn-login:hover {
+            background: rgba(255, 193, 7, 0.1);
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .btn-signup {
+            background: linear-gradient(45deg, var(--disney-blue), var(--disney-purple));
+            border: 2px solid transparent;
+            color: white;
+            box-shadow: 0 5px 15px rgba(13, 71, 161, 0.3);
+        }
+        
+        .btn-signup:hover {
+            background: linear-gradient(45deg, var(--disney-purple), var(--disney-blue));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(13, 71, 161, 0.4);
+        }
+        
+        /* Modal de connexion amélioré */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal.active {
+            display: flex;
+            animation: modalFadeIn 0.4s ease-out;
+        }
+        
+        .modal-content {
+            background: rgba(13, 13, 46, 0.95);
+            border-radius: 25px;
+            width: 90%;
+            max-width: 550px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+                        0 0 0 1px rgba(255, 193, 7, 0.1);
+            animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-blue), var(--disney-teal), var(--disney-gold));
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .modal-header h2 {
+            font-size: 32px;
+            color: white;
+            font-family: var(--header-font);
+            background: linear-gradient(45deg, var(--disney-gold), var(--disney-teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .close-modal {
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-modal:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: var(--header-font);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            color: white;
+            font-family: var(--body-font);
+        }
+        
+        .form-group input:focus {
+            border-color: var(--disney-gold);
+            background: rgba(255, 255, 255, 0.12);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+        }
+        
+        /* Style pour les messages d'erreur */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Style pour le formulaire de basculement */
+        .form-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .form-switch a {
+            color: var(--disney-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .form-switch a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Boutons de connexion sociale */
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--header-font);
+            border: 2px solid transparent;
+            font-size: 16px;
+        }
+        
+        .btn-google {
+            background: white;
+            color: #444;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-google:hover {
+            background: #f8f8f8;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-apple {
+            background: #000;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-apple:hover {
+            background: #222;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .social-btn i {
+            font-size: 20px;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .divider span {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+        
+        /* Pied de page amélioré */
+        footer {
+            background: rgba(13, 13, 46, 0.95);
+            color: white;
+            padding: 70px 5% 40px;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 193, 7, 0.2);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-blue), var(--disney-teal), var(--disney-gold));
+        }
+        
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section {
+            position: relative;
+        }
+        
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--disney-gold);
+            font-family: var(--header-font);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--disney-gold), transparent);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            transition: all 0.3s;
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            position: relative;
+            padding-left: 0;
+            transition: all 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+            padding-left: 15px;
+        }
+        
+        .footer-section a:hover::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--disney-gold);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 15px;
+        }
+        
+        .footer-bottom p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .footer-bottom p::before, .footer-bottom p::after {
+            content: '✦';
+            color: var(--disney-gold);
+            font-size: 18px;
+        }
+        
+        /* Satellites en orbite décoratifs */
+        .orbiting-satellites {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .satellite {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: orbit 20s infinite linear;
+            background: radial-gradient(circle at 30% 30%, var(--disney-teal), var(--disney-blue));
+            box-shadow: 0 0 15px rgba(0, 151, 167, 0.7);
+        }
+        
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(150px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(150px) rotate(-360deg);
+            }
+        }
+        
+        /* Animation spéciale pour l'univers */
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(-100px) translateY(0) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw) translateY(100px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+        
+        .shooting-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, white);
+            box-shadow: 0 0 10px 1px white;
+            animation: shootingStar 5s infinite linear;
+        }
+        
+        /* Responsive amélioré */
+        @media (max-width: 1200px) {
+            .universe-container {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .category-hero h1 {
+                font-size: 62px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .universe-container {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            
+            .category-hero h1 {
+                font-size: 52px;
+            }
+            
+            .category-hero p {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 20px 5%;
+            }
+            
+            .user-menu-container {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                padding: 15px 20px;
+                font-size: 15px;
+            }
+            
+            .category-hero {
+                padding: 100px 5% 60px;
+            }
+            
+            .category-hero h1 {
+                font-size: 44px;
+            }
+            
+            .category-hero p {
+                font-size: 20px;
+            }
+            
+            .universe-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 25px;
+            }
+            
+            .modal-content {
+                padding: 40px 30px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .universe-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-hero h1 {
+                font-size: 38px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .section-title::before, .section-title::after {
+                display: none;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .btn-login, .btn-signup {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Effet de galaxies -->
+    <div class="galaxy-bg" id="galaxyBg"></div>
+    
+    <!-- Nébuleuse -->
+    <div class="nebula"></div>
+    
+    <!-- Étoiles filantes -->
+    <div class="shooting-stars" id="shootingStars"></div>
+    
+    <!-- Satellites en orbite -->
+    <div class="orbiting-satellites" id="orbitingSatellites"></div>
+    
+    <!-- En-tête avec logo et menu utilisateur -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <div class="universe-icon">🌌</div>
+                <h1 class="site-title">SDM Disney</h1>
+                <!-- Étincelles magiques -->
+                <div class="magic-sparkle" style="top: 10px; right: -5px; animation-delay: 0.2s;"></div>
+                <div class="magic-sparkle" style="bottom: 5px; left: 40px; animation-delay: 0.7s;"></div>
+                <div class="magic-sparkle" style="top: 30px; left: 10px; animation-delay: 1.3s;"></div>
+            </a>
+            
+            <div class="user-menu-container">
+                <!-- Boutons de connexion/inscription (visible quand non connecté) -->
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn-login" id="openLoginModal">Se connecter</button>
+                    <button class="btn-signup" id="openSignupModal">S'inscrire</button>
+                </div>
+                
+                <!-- Info utilisateur (visible quand connecté) -->
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span id="userName">Utilisateur</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                
+                <!-- Menu déroulant utilisateur style Glass iOS -->
+                <div class="user-dropdown-menu" id="userDropdown">
+                    <ul>
+                        <li onclick="navigateTo('profil.html')">
+                            <i class="fas fa-user"></i>
+                            <span>Mon profil</span>
+                        </li>
+                        <li onclick="navigateTo('favoris.html')">
+                            <i class="fas fa-heart"></i>
+                            <span>Favoris</span>
+                        </li>
+                        <li onclick="navigateTo('historique.html')">
+                            <i class="fas fa-history"></i>
+                            <span>Historique</span>
+                        </li>
+                        <li onclick="navigateTo('parametres.html')">
+                            <i class="fas fa-cog"></i>
+                            <span>Paramètres</span>
+                        </li>
+                        <li id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Déconnexion</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Barre de navigation avec menu déroulant des catégories -->
+        <div class="nav-container">
+            <nav class="nav-menu">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link active" id="categoriesDropdownToggle">Catégories <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 12px;"></i></a>
+                    <div class="dropdown-menu" id="categoriesDropdown">
+                        <a href="conte-fee.html" class="dropdown-item" data-category="conte">Conte de fée</a>
+                        <a href="aventure.html" class="dropdown-item" data-category="aventure">Aventure&Action</a>
+                        <a href="enfants.html" class="dropdown-item" data-category="enfants">Education</a>
+                        <a href="univers.html" class="dropdown-item active" data-category="univers">Univers</a> 
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Section de bannière pour Univers -->
+    <section class="category-hero">
+        <h1>Univers Disney</h1>
+        <p>Explorez les différents univers magiques de Disney. Des classiques intemporels aux nouvelles découvertes, plongez dans des mondes extraordinaires remplis de personnages inoubliables et d'aventures palpitantes.</p>
+        <button class="btn btn-primary" style="max-width: 280px;" id="exploreBtn">Explorer l'univers</button>
+    </section>
+    
+    <!-- Section des univers -->
+    <section class="universes-section">
+        <h2 class="section-title">Univers Classiques</h2>
+        <div class="universe-container" id="classicUniversesContainer">
+            <!-- Les univers classiques seront chargés par JavaScript -->
+        </div>
+        
+        <h2 class="section-title">Univers Modernes</h2>
+        <div class="universe-container" id="modernUniversesContainer">
+            <!-- Les univers modernes seront chargés par JavaScript -->
+        </div>
+        
+        <h2 class="section-title">Séries & Courts-métrages</h2>
+        <div class="universe-container" id="seriesUniversesContainer">
+            <!-- Les séries seront chargées par JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Modal de connexion -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Connexion</h2>
+                <span class="close-modal" id="closeLoginModal">&times;</span>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                    <div class="error-message" id="loginEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" required>
+                    <div class="error-message" id="loginPasswordError"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+                
+                <div class="divider">
+                    <span>Ou continuer avec</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn btn-google" id="googleLoginBtn">
+                        <i class="fab fa-google"></i>
+                        Continuer avec Google
+                    </button>
+                    <button type="button" class="social-btn btn-apple" id="appleLoginBtn">
+                        <i class="fab fa-apple"></i>
+                        Continuer avec Apple
+                    </button>
+                </div>
+                
+                <div class="form-switch">
+                    Pas encore de compte ? <a href="#" id="switchToSignup">S'inscrire</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal d'inscription -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Inscription</h2>
+                <span class="close-modal" id="closeSignupModal">&times;</span>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Nom complet</label>
+                    <input type="text" id="signupName" required>
+                    <div class="error-message" id="signupNameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                    <div class="error-message" id="signupEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Mot de passe</label>
+                    <input type="password" id="signupPassword" required>
+                    <div class="error-message" id="signupPasswordError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirmer le mot de passe</label>
+                    <input type="password" id="signupConfirmPassword" required>
+                    <div class="error-message" id="signupConfirmPasswordError"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+                
+                <div class="divider">
+                    <span>Ou s'inscrire avec</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn btn-google" id="googleSignupBtn">
+                        <i class="fab fa-google"></i>
+                        S'inscrire avec Google
+                    </button>
+                    <button type="button" class="social-btn btn-apple" id="appleSignupBtn">
+                        <i class="fab fa-apple"></i>
+                        S'inscrire avec Apple
+                    </button>
+                </div>
+                
+                <div class="form-switch">
+                    Déjà un compte ? <a href="#" id="switchToLogin">Se connecter</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Pied de page -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>À propos de SDM Disney</h3>
+                <p>SDM Disney est une plateforme qui regroupe les meilleurs dessins animés pour toute la famille. Profitez de contenu adapté à tous les âges et tous les goûts.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Catégories</h3>
+                <ul>
+                    <li><a href="conte-fee.html">Contes de fée</a></li>
+                    <li><a href="aventure.html">Aventure&Action</a></li>
+                    <li><a href="univers.html">Univers</a></li> 
+                    <li><a href="enfants.html">Education</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@sdmdisney.com</p>
+                <p>Téléphone: +33 1 23 45 67 89</p>
+                <p>Adresse: 123 Avenue Disney, 77000 Paris</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 SDM Disney. Tous droits réservés. Conçu avec ❤️ pour les familles</p>
+        </div>
+    </footer>
+
+    <script>
+        // Données des univers Disney
+        const classicUniverses = [
+            {
+                id: "tomjerry",
+                title: "Tom et Jerry",
+                description: "Le chat et la souris les plus célèbres du monde dans leurs aventures comiques et chaotiques.",
+                image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "tomjerry.html"
+            },
+            {
+                id: "oggy",
+                title: "Oggy et les Cafards",
+                description: "Découvre les aventures hilarantes d'Oggy et les cafards.",
+                image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "oggy.html"
+            },
+            {
+                id: "zik",
+                title: "Zik et Zarko",
+                description: "Découvre les aventures hilarantes de Zik et Zarko",
+                image: "https://images.unsplash.com/photo-1598894597310-2f1d6fab2d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "zik.html"
+            },
+             {
+                id: "corneil",
+                title: "Corneil&Bernie",
+                description: "Les aventures hilarantes de Corneil et Bernie",
+                image: "https://images.unsplash.com/photo-1598894597310-2f1d6fab2d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "corneil.html"
+            },
+              {
+                id: "marcelino",
+                title: "Marcelino",
+                description: "Découvre les aventures de Marcelino, le petit garçon.",
+                image: "https://images.unsplash.com/photo-1598894597310-2f1d6fab2d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "marcelino.html"
+            },
+                {
+                id: "oui",
+                title: "OUI OUI au pays des jouets",
+                description: "Découvrez les aventures amusantes d'OUI OUI et ses amis dans leur monde magique.",
+                image: "https://images.unsplash.com/photo-1598894597310-2f1d6fab2d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "oui.html"
+            },
+                {
+                id: "charlotte",
+                title: "Charlote aux fraises",
+                description: "Découvrez les aventures de Charlote, la petite fille qui adore les fraises.",
+                image: "https://images.unsplash.com/photo-1598894597310-2f1d6fab2d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "charlotte.html"
+            },
+                {
+                id: "franklin",
+                title: "Franklin",
+                description: "Découvrez les aventures de Franklin..",
+                image: "https://images.unsplash.com/photo-1598894597310-2f1d6fab2d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "franklin.html"
+            },
+                {
+                id: "bob",
+                title: "Bob l'éponge",
+                description: "Découvrez les aventures de Bob l'éponge et ses amis dans la ville de Bikini Bottom.",
+                image: "https://images.unsplash.com/photo-1598894597310-2f1d6fab2d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "bob.html"
+            },
+                {
+                id: "dalton",
+                title: "Les Dalton",
+                description: "Découvrez les aventures de la famille Dalton.",
+                image: "https://images.unsplash.com/photo-1598894597310-2f1d6fab2d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "dalton.html"
+            },
+                {
+                id: "schtroumpfs",
+                title: "Les Schtroumpfs",
+                description: "Découvrez les aventures des Schtroumpfs dans leur monde magique.",
+                image: "https://images.unsplash.com/photo-1598894597310-2f1d6fab2d5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "schtroumpfs.html"
+            },
+                  {
+                id: "garfield",
+                title: "Garfield",
+                description: "Découvrez les aventures de Garfield, le chat paresseux.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "garfield.html"
+            },
+                  {
+                id: "boule",
+                title: "Boule et Bill",
+                description: "Découvrez les aventures de Boule et Bill.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "boule.html"
+            },
+                  {
+                id: "zinzins",
+                title: "Les Zinzins",
+                description: "Découvrez les aventures des Zinzins .",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "zinzins.html"
+            },
+                  {
+                id: "ernest",
+                title: "Ernest et Célestine",
+                description: "Découvrez les aventures d'Ernest et Célestine.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "ernest.html"
+            },
+                  {
+                id: "masha",
+                title: "masha et Michka",
+                description: "Découvrez les aventures de Masha et Michka.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "masha.html"
+            },
+                  {
+                id: "sawyer",
+                title: "Tom Sawyer",
+                description: "Découvrez les aventures de Tom Sawyer.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "sawyer.html"
+            },
+                  {
+                id: "insectibles",
+                title: "Zak et les insectibles",
+                description: "Découvrez les aventures de Zak et ses amis insectes.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "insectibles.html"
+            },
+                  {
+                id: "michel",
+                title: "Michel",
+                description: "Découvrez les aventures de Michel .",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "michel.html"
+            },
+                {
+                id: "pat",
+                title: "Pat et Stan",
+                description: "Découvrez les aventures de Pat et Stan.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "pat.html"
+            },
+                {
+                id: "paf",
+                title: "Paf le chien",
+                description: "Découvrez les aventures de Paf le chien.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "paf.html"
+            },
+                {
+                id: "lapins",
+                title: "Les lapins crétins",
+                description: "Découvrez les aventures des lapins crétins.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "lapins.html"
+            },
+                {
+                id: "oddbods",
+                title: "Odbodds",
+                description: "Découvrez les aventures d'Odbodds.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "oddbods.html"
+            },
+                {
+                id: "fou",
+                title: "Les fous du kung-fu",
+                description: "Découvrez les aventures des fous du kung-fu.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "fou.html"
+            },
+                {
+                id: "",
+                title: "",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: ""
+            },
+                {
+                id: "",
+                title: "",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: ""
+            },
+                {
+                id: "",
+                title: "",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: ""
+            },
+                {
+                id: "",
+                title: "",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: ""
+            },
+        ];
+
+        const modernUniverses = [
+            {
+                id: "cars",
+                title: "Cars",
+                description: "Plongez dans le monde des voitures animées avec Flash McQueen et ses amis.",
+                image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "cars.html"
+            },
+            {
+                id: "toystory",
+                title: "Toy Story",
+                description: "Découvrez les aventures secrètes des jouets quand les humains ne regardent pas.",
+                image: "https://images.unsplash.com/photo-1567593810070-7a5c0925344e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "toystory.html"
+            },
+            {
+                id: "nemo",
+                title: "Le Monde de Nemo",
+                description: "Explorez les profondeurs océaniques avec Nemo, Dory et leurs amis marins.",
+                image: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "nemo.html"
+            }
+        ];
+
+        const seriesUniverses = [
+            {
+                id: "angelo",
+                title: "Angelo la débrouille",
+                description: "Rejoignez Angelo et ses amis dans leurs aventures strategique.",
+                image: "https://images.unsplash.com/photo-1531259683007-016a7b628fc3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "angelo.html"
+            },
+            {
+                id: "patrouille",
+                title: "La Pat' Patrouille",
+                description: "Suivez les aventures de la patrouille de police animée.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "patrouille.html"
+            },
+            {
+                id: "tchoupi",
+                title: "T'choupi",
+                description: "Les aventures du petit T'choupi et Doudou.",
+                image: "https://images.unsplash.com/photo-1514888286974-6d03bde4ba42?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "tchoupi.html"
+            },
+             {
+                id: "sisters",
+                title: "Les Sisters",
+                description: "Découvrez les aventures des deux sœurs dans leur quotidien.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "sisters.html"
+            },
+                {
+                id: "diables",
+                title: "Les petits diables",
+                description: "Les aventures des petits diables dans leur quotidien.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "diables.html"
+            },
+                {
+                id: "spirou",
+                title: "Le petit Spirou",
+                description: "Les aventures du petit Spirou et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "spirou.html"
+            },
+                {
+                id: "lou",
+                title: "Lou",
+                description: "Les aventures du petit Lou et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "lou.html"
+            },
+                {
+                id: "martin",
+                title: "Martin Matin",
+                description: "Les aventures du petit Martin Matin et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "martin.html"
+            },
+                {
+                id: "Sam",
+                title: "Sam Sam",
+                description: "Les aventures du petit Sam Sam et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "sam.html"
+            },
+                {
+                id: "maya",
+                title: "Maya l'abeille",
+                description: "Les aventures de Maya l'abeille et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "maya.html"
+            },
+                {
+                id: "mini",
+                title: "Mini Loup",
+                description: "Les aventures du petit Mini Loup et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "mini.html"
+            },
+                {
+                id: "peppa",
+                title: "Peppa Pig",
+                description: "Les aventures de Peppa Pig et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "peppa.html"
+            },
+            {
+                id: "cat",
+                title: "La famille Chat",
+                description: "Les aventures de la famille Chat et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "cat.html"
+            },
+            {
+                id: "chat",
+                title: "44 chats",
+                description: "Les aventures de 44 chats et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "chat.html"
+            },
+            {
+                id: "poilu",
+                title: "Petit Poilu",
+                description: "Les aventures du petit Poilu.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "poilu.html"
+            },
+            {
+                id: "justice",
+                title: "Les mini-justiciers",
+                description: "Les aventures des mini-justiciers .",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "justice.html"
+            },
+            {
+                id: "pompier",
+                title: "Sam le pompier",
+                description: "Les aventures de Sam le pompier.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "pompier.html"
+            },
+               {
+                id: "wings",
+                title: "Les super wings",
+                description: "Les aventures des super wings.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "wings.html"
+            },
+               {
+                id: "oscar",
+                title: "Oscar et Malika",
+                description: "Les aventures d'Oscar et Malika.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "oscar.html"
+            },
+               {
+                id: "rainbo",
+                title: "Rainbow Ruby",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "rainbo.html"
+            },
+               {
+                id: "arthur",
+                title: "Arthur et les minimoys",
+                description: "Les aventures d'Arthur et ses amis minimoys.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "arthur.html"
+            },
+               {
+                id: "table",
+                title: "Arthur et les enfants de la table ronde",
+                description: "Les aventures d'Arthur et ses amis enfants de la table ronde.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "table.html"
+            },
+               {
+                id: "marsu",
+                title: "Marsupilami",
+                description: "Les aventures de Marsupilami.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "marsu.html"
+            },
+               {
+                id: "oum",
+                title: "Oum le dauphin blanc",
+                description: "Les aventures d'Oum le dauphin blanc.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "oum.html"
+            },
+                  {
+                id: "spies",
+                title: "Totally Spies",
+                description: "Les aventures de Sam, Alex et Clover.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "spies.html"
+            },
+                  {
+                id: "magic",
+                title: "Magic",
+                description: "La famille Magic et leurs aventures.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "magic.html"
+            },
+                  {
+                id: "pirate",
+                title: "La famille pirate",
+                description: "Les aventures de la famille pirate.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: ""
+            },
+                  {
+                id: "pirata",
+                title: "Pirata et Capitano",
+                description: "Les aventures de Pirata et Capitano.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "pirata.html"
+            },
+                  {
+                id: "mon-chevalier",
+                title: "Mon chevalier et moi",
+                description: "Les aventures de mon chevalier et moi.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "mon-chevalier.html"
+            },
+                  {
+                id: "nella",
+                title: "Nella la princesse chevalier",
+                description: "Les aventures de Nella la princesse chevalier.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "nella.html"
+            },
+                {
+                id: "winx",
+                title: "Winx Club",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "winx.html"
+            },
+                {
+                id: "bluey",
+                title: "Bluey",
+                description: "Les aventures de Bluey.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "bluey.html"
+            },
+                {
+                id: "crumpets",
+                title: "Les Crumpets",
+                description: "Les famille Crumpets.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "crumpets.html"
+            },
+                {
+                id: "kaeloo",
+                title: "Kaeloo",
+                description: "Les aventures de Kaeloo.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "kaeloo.html"
+            },
+                {
+                id: "k-trois",
+                title: "K3",
+                description: "les aventures musicalesde K3.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "k-trois.html"
+            },
+                {
+                id: "sherlock",
+                title: "Sherlock yack",
+                description: "Les aventures de Sherlock yack.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "sherlock.html"
+            },
+                {
+                id: "sardine",
+                title: "Sardine de L'espace",
+                description: "Les aventures de Sardine de L'espace.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "sardine.html"
+            },
+                {
+                id: "barbapapa",
+                title: "Barbapapa",
+                description: "Les aventures des Barbapapa.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "barbapapa.html"
+            },
+                {
+                id: "lassie",
+                title: "Lassie",
+                description: "Les aventures de Lassie.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "lassie.html"
+            },
+                {
+                id: "talking",
+                title: "Talking Tom& friends",
+                description: "Les aventures de Talking Tom.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "talking.html"
+            },
+                {
+                id: "marecage",
+                title: "Camp Marecage",
+                description: "Les aventures au Camp Marecage.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "marecage.html"
+            },
+                {
+                id: "dad",
+                title: "Les filles de Dad",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "dad.html"
+            },
+                {
+                id: "power",
+                title: "Power Rangers",
+                description: "Les aventures des Power Rangers.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "power.html"
+            },
+                {
+                id: "jamie",
+                title: "Jamie a des tentacules",
+                description: "Les aventures de Jamie.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "jamie.html"
+            },
+                {
+                id: "infernale",
+                title: "La boucle infernale",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "infernale.html"
+            },
+                {
+                id: "miraculous",
+                title: "Miraculous",
+                description: "Les aventures de Ladybug et Chat noir.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "miraculous.html"
+            },
+                {
+                id: "ranger-rob",
+                title: "Ranger Rob",
+                description: "Les aventures de Ranger Rob.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "ranger-rob.html"
+            },
+                {
+                id: "livre-jungle",
+                title: "Le Livre de la jungle",
+                description: "Les aventures de Mowgli .",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "livre-jungle.html"
+            },
+                {
+                id: "pan",
+                title: "Peter pan",
+                description: "Les aventures de Peter pan.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "pan.html"
+            },
+                {
+                id: "alvin",
+                title: "Alvin et les Chipmunks",
+                description: "Les aventures d'Alvin et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "alvin.html"
+            },
+                {
+                id: "dora",
+                title: "Dora l'exploratrice",
+                description: "Les aventures de Dora.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "dora.html"
+            },
+                {
+                id: "robocar",
+                title: "Robocar police",
+                description: "  Robocar police.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "robocar.html"
+            },
+            {
+                id: "trotro",
+                title: "Trotro",
+                description: "Les aventures de Trotro.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "trotro.html"
+            },
+            {
+                id: "bricoleur",
+                title: "Bob le bricoleur",
+                description: "Les aventures de Bob le bricoleur.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "bricoleur.html"
+            },
+            {
+                id: "ricky",
+                title: "Ricky Zoom",
+                description: "Les aventures de Ricky Zoom.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "ricky.html"
+            },
+            {
+                id: "spirit",
+                title: "Spirit au galop",
+                description: "Les aventures de Spirit.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "spirit.html"
+            },
+            {
+                id: "yakari",
+                title: "Yakari",
+                description: "Les aventures de Yakari.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "yakari.html"
+            },
+            {
+                id: "elvis",
+                title: "Moi, Elvis",
+                description: "Les aventures de Moi, Elvis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "elvis.html"
+            },
+            {
+                id: "danny",
+                title: "Le village de Danny",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "danny.html"
+            },
+            {
+                id: "tim-tatoum",
+                title: "Tim et Tatoum",
+                description: "Les aventures de Tim et Tatoum.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "tim-tatoum.html"
+            },
+            {
+                id: "floogals",
+                title: "Les Floogals",
+                description: "Les aventures des Floogals.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "floogals.html"
+            },
+            {
+                id: "blaze",
+                title: "Blaze et les Monster Machines",
+                description: "Les aventures de Blaze et ses amis.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "blaze.html"
+            },
+            {
+                id: "pyzamasque",
+                title: "Pyzamasques",
+                description: "Les aventures des Pyzamasques.",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: "pyzamasque.html"
+            },
+            {
+                id: "",
+                title: "",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: ""
+            },
+            {
+                id: "",
+                title: "",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: ""
+            },
+            {
+                id: "",
+                title: "",
+                description: "",
+                image: "https://images.unsplash.com/photo-1592500103250-6f8d5c57f8e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                page: ""
+            },
+            
+        ];
+
+        // Variables globales
+        let currentUser = null;
+
+        // Initialisation lorsque la page est chargée
+        document.addEventListener('DOMContentLoaded', function() {
+            // Créer les effets visuels
+            createGalaxyBg();
+            createShootingStars();
+            createOrbitingSatellites();
+            
+            // Charger les univers
+            loadUniverses();
+            
+            // Configurer les interactions
+            setupInteractions();
+            
+            // Configurer l'authentification
+            setupAuthentication();
+            
+            // Vérifier si un utilisateur est déjà connecté (depuis localStorage)
+            checkLoggedInUser();
+        });
+
+        // Vérifier si un utilisateur est connecté dans localStorage
+        function checkLoggedInUser() {
+            const savedUser = localStorage.getItem('sdmDisneyUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUserInterface();
+                showNotification(`Bon retour ${currentUser.displayName} !`, 'success');
+            }
+        }
+
+        // Créer l'effet de galaxies
+        function createGalaxyBg() {
+            const container = document.getElementById('galaxyBg');
+            const starCount = 200;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star-cluster');
+                
+                const size = Math.random() * 4 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                star.style.animationDuration = `${1 + Math.random() * 4}s`;
+                
+                container.appendChild(star);
+            }
+        }
+
+        // Créer les étoiles filantes
+        function createShootingStars() {
+            const container = document.getElementById('shootingStars');
+            const starCount = 5;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('shooting-star');
+                
+                star.style.top = `${Math.random() * 50}%`;
+                star.style.left = `${Math.random() * 20}%`;
+                star.style.animationDelay = `${Math.random() * 15}s`;
+                star.style.animationDuration = `${3 + Math.random() * 4}s`;
+                
+                container.appendChild(star);
+            }
+        }
+
+        // Créer les satellites en orbite
+        function createOrbitingSatellites() {
+            const container = document.getElementById('orbitingSatellites');
+            const satelliteCount = 3;
+            
+            for (let i = 0; i < satelliteCount; i++) {
+                const satellite = document.createElement('div');
+                satellite.classList.add('satellite');
+                
+                // Position aléatoire pour le centre de l'orbite
+                const orbitCenterX = 10 + Math.random() * 80;
+                const orbitCenterY = 10 + Math.random() * 80;
+                
+                satellite.style.left = `${orbitCenterX}%`;
+                satellite.style.top = `${orbitCenterY}%`;
+                satellite.style.animationDelay = `${Math.random() * 5}s`;
+                satellite.style.animationDuration = `${15 + Math.random() * 10}s`;
+                
+                container.appendChild(satellite);
+            }
+        }
+
+        // Charger les univers
+        function loadUniverses() {
+            // Charger les univers classiques
+            const classicContainer = document.getElementById('classicUniversesContainer');
+            if (classicContainer) {
+                classicContainer.innerHTML = '';
+                loadUniverseSection(classicUniverses, classicContainer);
+            }
+            
+            // Charger les univers modernes
+            const modernContainer = document.getElementById('modernUniversesContainer');
+            if (modernContainer) {
+                modernContainer.innerHTML = '';
+                loadUniverseSection(modernUniverses, modernContainer);
+            }
+            
+            // Charger les séries
+            const seriesContainer = document.getElementById('seriesUniversesContainer');
+            if (seriesContainer) {
+                seriesContainer.innerHTML = '';
+                loadUniverseSection(seriesUniverses, seriesContainer);
+            }
+        }
+
+        // Charger une section d'univers
+        function loadUniverseSection(universeData, container) {
+            universeData.forEach((universe, index) => {
+                const universeItem = document.createElement('a');
+                universeItem.className = 'universe-item';
+                universeItem.href = universe.page;
+                universeItem.style.animationDelay = `${index * 0.1}s`;
+                
+                universeItem.innerHTML = `
+                    <div class="universe-thumbnail">
+                        <img src="${universe.image}" alt="${universe.title}" loading="lazy">
+                    </div>
+                    <div class="universe-info">
+                        <h3>${universe.title}</h3>
+                        <p>${universe.description}</p>
+                        <div class="universe-meta">
+                            <span><i class="fas fa-play-circle"></i> Explorer</span>
+                            <span><i class="fas fa-star"></i> Classique</span>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(universeItem);
+            });
+        }
+
+        // Configurer les interactions
+        function setupInteractions() {
+            // Gérer le bouton "Explorer l'univers"
+            const exploreBtn = document.getElementById('exploreBtn');
+            if (exploreBtn) {
+                exploreBtn.addEventListener('click', function() {
+                    document.getElementById('classicUniversesContainer').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                });
+            }
+            
+            // Gérer le menu déroulant des catégories
+            const categoriesDropdownToggle = document.getElementById('categoriesDropdownToggle');
+            const categoriesDropdown = document.getElementById('categoriesDropdown');
+            
+            if (categoriesDropdownToggle) {
+                categoriesDropdownToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    categoriesDropdown.classList.toggle('active');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!categoriesDropdownToggle.contains(e.target) && !categoriesDropdown.contains(e.target)) {
+                        categoriesDropdown.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Configurer l'authentification
+        function setupAuthentication() {
+            // Éléments modaux
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            const openLoginModalBtn = document.getElementById('openLoginModal');
+            const openSignupModalBtn = document.getElementById('openSignupModal');
+            const closeLoginModalBtn = document.getElementById('closeLoginModal');
+            const closeSignupModalBtn = document.getElementById('closeSignupModal');
+            const switchToSignupLink = document.getElementById('switchToSignup');
+            const switchToLoginLink = document.getElementById('switchToLogin');
+            
+            // Ouvrir modaux
+            if (openLoginModalBtn) {
+                openLoginModalBtn.addEventListener('click', () => {
+                    loginModal.classList.add('active');
+                    signupModal.classList.remove('active');
+                });
+            }
+            
+            if (openSignupModalBtn) {
+                openSignupModalBtn.addEventListener('click', () => {
+                    signupModal.classList.add('active');
+                    loginModal.classList.remove('active');
+                });
+            }
+            
+            // Fermer modaux
+            if (closeLoginModalBtn) {
+                closeLoginModalBtn.addEventListener('click', () => {
+                    loginModal.classList.remove('active');
+                });
+            }
+            
+            if (closeSignupModalBtn) {
+                closeSignupModalBtn.addEventListener('click', () => {
+                    signupModal.classList.remove('active');
+                });
+            }
+            
+            // Basculer entre modaux
+            if (switchToSignupLink) {
+                switchToSignupLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginModal.classList.remove('active');
+                    signupModal.classList.add('active');
+                });
+            }
+            
+            if (switchToLoginLink) {
+                switchToLoginLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signupModal.classList.remove('active');
+                    loginModal.classList.add('active');
+                });
+            }
+            
+            // Fonction pour valider l'email
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Gestion de l'inscription
+            const signupForm = document.getElementById('signupForm');
+            if (signupForm) {
+                signupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('signupName').value;
+                    const email = document.getElementById('signupEmail').value;
+                    const password = document.getElementById('signupPassword').value;
+                    const confirmPassword = document.getElementById('signupConfirmPassword').value;
+                    
+                    // Validation côté client
+                    if (!isValidEmail(email)) {
+                        showNotification('Veuillez entrer une adresse email valide', 'error');
+                        return;
+                    }
+                    
+                    if (password !== confirmPassword) {
+                        showNotification('Les mots de passe ne correspondent pas', 'error');
+                        return;
+                    }
+                    
+                    if (password.length < 6) {
+                        showNotification('Le mot de passe doit contenir au moins 6 caractères', 'error');
+                        return;
+                    }
+                    
+                    // Créer l'utilisateur (simulation)
+                    const userId = 'user_' + Date.now();
+                    const user = {
+                        uid: userId,
+                        email: email,
+                        displayName: name,
+                        createdAt: new Date().toISOString()
+                    };
+                    
+                    // Sauvegarder l'utilisateur dans localStorage
+                    localStorage.setItem('sdmDisneyUser', JSON.stringify(user));
+                    
+                    // Mettre à jour l'interface
+                    currentUser = user;
+                    updateUserInterface();
+                    
+                    // Fermer le modal et réinitialiser le formulaire
+                    signupModal.classList.remove('active');
+                    signupForm.reset();
+                    
+                    showNotification('Compte créé avec succès !', 'success');
+                });
+            }
+            
+            // Gestion de la connexion
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+                    
+                    // Vérifier les identifiants (simulation)
+                    const savedUser = localStorage.getItem('sdmDisneyUser');
+                    
+                    if (savedUser) {
+                        const user = JSON.parse(savedUser);
+                        
+                        // Simulation de vérification
+                        if (user.email === email) {
+                            // Connexion réussie
+                            currentUser = user;
+                            updateUserInterface();
+                            
+                            loginModal.classList.remove('active');
+                            loginForm.reset();
+                            
+                            showNotification('Connexion réussie !', 'success');
+                        } else {
+                            showNotification('Email ou mot de passe incorrect', 'error');
+                        }
+                    } else {
+                        // Premier utilisateur - création automatique
+                        const userId = 'user_' + Date.now();
+                        const user = {
+                            uid: userId,
+                            email: email,
+                            displayName: email.split('@')[0],
+                            createdAt: new Date().toISOString()
+                        };
+                        
+                        localStorage.setItem('sdmDisneyUser', JSON.stringify(user));
+                        currentUser = user;
+                        updateUserInterface();
+                        
+                        loginModal.classList.remove('active');
+                        loginForm.reset();
+                        
+                        showNotification('Compte créé et connexion réussie !', 'success');
+                    }
+                });
+            }
+            
+            // Gestion de la déconnexion
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    // Supprimer l'utilisateur du localStorage
+                    localStorage.removeItem('sdmDisneyUser');
+                    currentUser = null;
+                    updateUserInterface();
+                    
+                    showNotification('Déconnexion réussie', 'info');
+                    const userDropdown = document.getElementById('userDropdown');
+                    if (userDropdown) {
+                        userDropdown.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Gestion du menu déroulant utilisateur
+            const userInfo = document.getElementById('userInfo');
+            const userDropdown = document.getElementById('userDropdown');
+            
+            if (userInfo) {
+                userInfo.addEventListener('click', () => {
+                    userDropdown.classList.toggle('active');
+                });
+                
+                // Fermer le menu déroulant en cliquant à l'extérieur
+                window.addEventListener('click', (e) => {
+                    if (!userInfo.contains(e.target) && !userDropdown.contains(e.target)) {
+                        userDropdown.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Navigation vers les pages
+            window.navigateTo = function(page) {
+                if (currentUser) {
+                    window.location.href = page;
+                } else {
+                    showNotification('Veuillez vous connecter pour accéder à cette page.', 'info');
+                    document.getElementById('loginModal').classList.add('active');
+                }
+            };
+            
+            // Fermer modaux en cliquant à l'extérieur
+            window.addEventListener('click', (e) => {
+                if (e.target === loginModal) {
+                    loginModal.classList.remove('active');
+                }
+                if (e.target === signupModal) {
+                    signupModal.classList.remove('active');
+                }
+            });
+        }
+
+        // Mettre à jour l'interface utilisateur en fonction de l'état de connexion
+        function updateUserInterface() {
+            const authButtons = document.getElementById('authButtons');
+            const userInfo = document.getElementById('userInfo');
+            const userAvatar = document.getElementById('userAvatar');
+            const userName = document.getElementById('userName');
+            
+            if (currentUser && userInfo) {
+                // Afficher les informations utilisateur
+                authButtons.style.display = 'none';
+                userInfo.style.display = 'flex';
+                
+                // Mettre à jour le nom et l'avatar
+                userName.textContent = currentUser.displayName;
+                
+                if (currentUser.photoURL) {
+                    userAvatar.innerHTML = `<img src="${currentUser.photoURL}" alt="${currentUser.displayName}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+                } else {
+                    userAvatar.textContent = currentUser.displayName.charAt(0).toUpperCase();
+                    
+                    // Ajouter une couleur d'avatar basée sur le nom
+                    const colors = ['#0d47a1', '#0097a7', '#7b1fa2', '#e91e63', '#d32f2f'];
+                    const colorIndex = currentUser.displayName.length % colors.length;
+                    userAvatar.style.background = `linear-gradient(135deg, ${colors[colorIndex]}, ${colors[(colorIndex + 1) % colors.length]})`;
+                }
+            } else if (authButtons) {
+                // Afficher les boutons d'authentification
+                authButtons.style.display = 'flex';
+                if (userInfo) userInfo.style.display = 'none';
+            }
+        }
+
+        // Afficher une notification
+        function showNotification(message, type) {
+            // Créer l'élément de notification
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            // Styles de la notification
+            notification.style.position = 'fixed';
+            notification.style.top = '30px';
+            notification.style.right = '30px';
+            notification.style.padding = '15px 25px';
+            notification.style.borderRadius = '10px';
+            notification.style.color = 'white';
+            notification.style.fontWeight = '600';
+            notification.style.zIndex = '9999';
+            notification.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            notification.style.animation = 'slideInRight 0.3s ease-out';
+            
+            // Couleur selon le type
+            if (type === 'success') {
+                notification.style.background = 'linear-gradient(45deg, #2ecc71, #27ae60)';
+                notification.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            } else if (type === 'error') {
+                notification.style.background = 'linear-gradient(45deg, #e74c3c, #c0392b)';
+                notification.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            } else {
+                notification.style.background = 'linear-gradient(45deg, #3498db, #2980b9)';
+                notification.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            }
+            
+            // Ajouter au document
+            document.body.appendChild(notification);
+            
+            // Supprimer après 5 secondes
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease-out';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+            
+            // Ajouter les keyframes pour l'animation
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideInRight {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOutRight {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+    </script>
+</body>
+</html>

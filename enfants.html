@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éducation - SDM Disney</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables CSS améliorées pour une ambiance éducative */
+        :root {
+            --disney-blue: #1565c0;
+            --disney-purple: #7b1fa2;
+            --disney-yellow: #ffd54f;
+            --disney-green: #43a047;
+            --disney-teal: #00897b;
+            --disney-pink: #d81b60;
+            --disney-light: #f5f5f5;
+            --disney-dark: #121212;
+            --magic-shadow: 0 0 15px rgba(123, 31, 162, 0.3);
+            --header-font: 'Poppins', sans-serif;
+            --body-font: 'Quicksand', sans-serif;
+            --magic-font: 'Dancing Script', cursive;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Reset et styles de base améliorés */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--body-font);
+            background: linear-gradient(135deg, #0c1a2d 0%, #1a2b3c 50%, #2c3e50 100%);
+            color: var(--disney-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeInBody 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInBody {
+            to { opacity: 1; }
+        }
+        
+        /* Effet de particules éducatives en arrière-plan */
+        .magic-dust {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .dust-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: floatDust 15s infinite linear;
+        }
+        
+        @keyframes floatDust {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Effet d'étoiles scintillantes */
+        .twinkling-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* En-tête et navigation améliorés */
+        header {
+            background: rgba(13, 13, 46, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 213, 79, 0.2);
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            height: 90px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            text-decoration: none;
+        }
+        
+        .logo-container:hover .education-icon {
+            animation: bookBounce 1s ease;
+        }
+        
+        @keyframes bookBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(-5deg); }
+            75% { transform: translateY(5px) rotate(5deg); }
+        }
+        
+        .education-icon {
+            font-size: 42px;
+            color: var(--disney-yellow);
+            position: relative;
+            animation: iconFloat 6s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 213, 79, 0.7));
+        }
+        
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(5px) rotate(5deg); }
+        }
+        
+        .site-title {
+            font-family: var(--magic-font);
+            font-size: 38px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--disney-yellow), var(--disney-purple), var(--disney-teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .magic-sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 15px white;
+            animation: sparkle 2s infinite;
+            opacity: 0;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* Navigation avec menu déroulant des catégories amélioré */
+        .nav-container {
+            background: linear-gradient(90deg, var(--disney-purple), var(--disney-teal));
+            padding: 0 5%;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--disney-yellow), transparent);
+        }
+        
+        .nav-menu {
+            display: flex;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 18px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: block;
+            position: relative;
+            font-family: var(--header-font);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 4px;
+            background: var(--disney-yellow);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+        
+        /* Menu déroulant des catégories amélioré */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(13, 13, 46, 0.95);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            min-width: 250px;
+            display: none;
+            z-index: 1001;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 213, 79, 0.2);
+            border-top: none;
+        }
+        
+        .dropdown-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .dropdown-item {
+            padding: 15px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--disney-light);
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(255, 213, 79, 0.2);
+            padding-left: 35px;
+            color: white;
+        }
+        
+        .dropdown-item:hover::before {
+            content: '📚';
+            position: absolute;
+            left: 15px;
+            color: var(--disney-yellow);
+        }
+        
+        /* Menu utilisateur amélioré */
+        .user-menu-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .user-info:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--disney-purple), var(--disney-teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 0 15px rgba(123, 31, 162, 0.5);
+            border: 2px solid var(--disney-yellow);
+        }
+        
+        /* Style Glass iOS pour le menu utilisateur */
+        .user-dropdown-menu {
+            position: absolute;
+            top: 85px;
+            right: 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+            min-width: 280px;
+            display: none;
+            z-index: 1002;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            padding: 15px;
+        }
+        
+        .user-dropdown-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .user-dropdown-menu ul {
+            list-style: none;
+        }
+        
+        .user-dropdown-menu li {
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+        
+        .user-dropdown-menu li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .user-dropdown-menu li:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .user-dropdown-menu i {
+            margin-right: 15px;
+            color: var(--disney-yellow);
+            width: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .user-dropdown-menu span {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Section de bannière principale améliorée pour Éducation */
+        .category-hero {
+            text-align: center;
+            padding: 120px 5% 80px;
+            background: radial-gradient(circle at 30% 20%, rgba(123, 31, 162, 0.6) 0%, rgba(67, 160, 71, 0.4) 40%, transparent 70%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 213, 79, 0.5) 0%, rgba(0, 137, 123, 0.3) 30%, transparent 60%),
+                        url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 213, 79, 0.2);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .category-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .category-hero h1 {
+            font-family: var(--header-font);
+            font-size: 72px;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7),
+                         0 0 30px rgba(123, 31, 162, 0.5),
+                         0 0 60px rgba(67, 160, 71, 0.3);
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        .category-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--disney-yellow), transparent);
+        }
+        
+        .category-hero p {
+            font-size: 24px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 300;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+        
+        /* Section vidéos améliorée pour Éducation */
+        .videos-section {
+            padding: 60px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 42px;
+            color: white;
+            font-family: var(--header-font);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5),
+                         0 0 20px rgba(123, 31, 162, 0.3);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::before, .section-title::after {
+            content: '📚';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--disney-yellow);
+            font-size: 24px;
+            opacity: 0.8;
+        }
+        
+        .section-title::before {
+            left: -50px;
+        }
+        
+        .section-title::after {
+            right: -50px;
+        }
+        
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 35px;
+        }
+        
+        .video-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .video-item:nth-child(1) { animation-delay: 0.3s; }
+        .video-item:nth-child(2) { animation-delay: 0.4s; }
+        .video-item:nth-child(3) { animation-delay: 0.5s; }
+        .video-item:nth-child(4) { animation-delay: 0.6s; }
+        .video-item:nth-child(5) { animation-delay: 0.7s; }
+        .video-item:nth-child(6) { animation-delay: 0.8s; }
+        .video-item:nth-child(7) { animation-delay: 0.9s; }
+        .video-item:nth-child(8) { animation-delay: 1.0s; }
+        
+        .video-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                        0 0 30px rgba(123, 31, 162, 0.2);
+            border-color: rgba(123, 31, 162, 0.3);
+        }
+        
+        .video-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-purple), var(--disney-yellow), var(--disney-teal));
+            z-index: 2;
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .video-item:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        /* Effet de lecture automatique au survol */
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+            z-index: 1;
+        }
+        
+        .video-item:hover .video-thumbnail::after {
+            opacity: 1;
+            content: '▶';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+        
+        .video-info {
+            padding: 25px;
+        }
+        
+        .video-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+            font-family: var(--header-font);
+            min-height: 60px;
+        }
+        
+        .video-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modal vidéo amélioré */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .video-modal.active {
+            display: flex;
+        }
+        
+        .video-modal-content {
+            width: 90%;
+            max-width: 1100px;
+            background: rgba(13, 13, 46, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+                        0 0 0 1px rgba(255, 213, 79, 0.1);
+            animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(60px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .video-modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-purple), var(--disney-yellow), var(--disney-teal));
+            z-index: 2;
+        }
+        
+        .video-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-modal-header h3 {
+            font-size: 24px;
+            color: white;
+            font-family: var(--header-font);
+        }
+        
+        .close-video-modal {
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-video-modal:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+        
+        .video-modal-body {
+            padding: 0;
+        }
+        
+        .video-modal-iframe-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-modal-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-modal-info {
+            padding: 25px 30px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-modal-info p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        
+        /* Boutons améliorés */
+        .btn {
+            padding: 16px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--header-font);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--disney-purple), var(--disney-teal));
+            color: white;
+            box-shadow: 0 5px 20px rgba(123, 31, 162, 0.4);
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--disney-teal), var(--disney-purple));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(123, 31, 162, 0.6);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 50px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+        
+        .btn-primary:hover::after {
+            left: 120%;
+        }
+        
+        /* Boutons de connexion et d'inscription améliorés */
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-login, .btn-signup {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--header-font);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-login {
+            background: transparent;
+            border: 2px solid var(--disney-yellow);
+            color: var(--disney-yellow);
+        }
+        
+        .btn-login:hover {
+            background: rgba(255, 213, 79, 0.1);
+            box-shadow: 0 0 20px rgba(255, 213, 79, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .btn-signup {
+            background: linear-gradient(45deg, var(--disney-purple), var(--disney-blue));
+            border: 2px solid transparent;
+            color: white;
+            box-shadow: 0 5px 15px rgba(123, 31, 162, 0.3);
+        }
+        
+        .btn-signup:hover {
+            background: linear-gradient(45deg, var(--disney-blue), var(--disney-purple));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(123, 31, 162, 0.4);
+        }
+        
+        /* Modal de connexion amélioré */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal.active {
+            display: flex;
+            animation: modalFadeIn 0.4s ease-out;
+        }
+        
+        .modal-content {
+            background: rgba(13, 13, 46, 0.95);
+            border-radius: 25px;
+            width: 90%;
+            max-width: 550px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+                        0 0 0 1px rgba(255, 213, 79, 0.1);
+            animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-purple), var(--disney-yellow), var(--disney-teal));
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .modal-header h2 {
+            font-size: 32px;
+            color: white;
+            font-family: var(--header-font);
+            background: linear-gradient(45deg, var(--disney-yellow), var(--disney-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .close-modal {
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-modal:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: var(--header-font);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            color: white;
+            font-family: var(--body-font);
+        }
+        
+        .form-group input:focus {
+            border-color: var(--disney-yellow);
+            background: rgba(255, 255, 255, 0.12);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 213, 79, 0.2);
+        }
+        
+        /* Style pour les messages d'erreur */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Style pour le formulaire de basculement */
+        .form-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .form-switch a {
+            color: var(--disney-yellow);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .form-switch a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Boutons de connexion sociale */
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--header-font);
+            border: 2px solid transparent;
+            font-size: 16px;
+        }
+        
+        .btn-google {
+            background: white;
+            color: #444;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-google:hover {
+            background: #f8f8f8;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-apple {
+            background: #000;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-apple:hover {
+            background: #222;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .social-btn i {
+            font-size: 20px;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .divider span {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+        
+        /* Pied de page amélioré */
+        footer {
+            background: rgba(13, 13, 46, 0.95);
+            color: white;
+            padding: 70px 5% 40px;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 213, 79, 0.2);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--disney-purple), var(--disney-yellow), var(--disney-teal));
+        }
+        
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section {
+            position: relative;
+        }
+        
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--disney-yellow);
+            font-family: var(--header-font);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--disney-yellow), transparent);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            transition: all 0.3s;
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            position: relative;
+            padding-left: 0;
+            transition: all 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+            padding-left: 15px;
+        }
+        
+        .footer-section a:hover::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--disney-yellow);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 15px;
+        }
+        
+        .footer-bottom p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .footer-bottom p::before, .footer-bottom p::after {
+            content: '📚';
+            color: var(--disney-yellow);
+            font-size: 18px;
+        }
+        
+        /* Points colorés décoratifs */
+        .decorative-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: floatDot 20s infinite linear;
+        }
+        
+        @keyframes floatDot {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); }
+        }
+        
+        /* Animation spéciale pour l'éducation */
+        @keyframes educationFloat {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(50px) rotate(360deg); opacity: 0; }
+        }
+        
+        .education-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .education-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 213, 79, 0.8);
+            box-shadow: 0 0 15px 3px rgba(255, 213, 79, 0.7);
+            animation: educationFloat 12s infinite linear;
+        }
+        
+        .book-decoration {
+            position: absolute;
+            bottom: 0;
+            right: 5%;
+            width: 300px;
+            height: 300px;
+            background: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        /* Responsive amélioré */
+        @media (max-width: 1200px) {
+            .videos-container {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .category-hero h1 {
+                font-size: 62px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .videos-container {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            
+            .category-hero h1 {
+                font-size: 52px;
+            }
+            
+            .category-hero p {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 20px 5%;
+            }
+            
+            .user-menu-container {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                padding: 15px 20px;
+                font-size: 15px;
+            }
+            
+            .category-hero {
+                padding: 100px 5% 60px;
+            }
+            
+            .category-hero h1 {
+                font-size: 44px;
+            }
+            
+            .category-hero p {
+                font-size: 20px;
+            }
+            
+            .videos-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 25px;
+            }
+            
+            .modal-content {
+                padding: 40px 30px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .videos-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-hero h1 {
+                font-size: 38px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .section-title::before, .section-title::after {
+                display: none;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .btn-login, .btn-signup {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .video-modal-content {
+                width: 95%;
+                border-radius: 15px;
+            }
+            
+            .video-modal-header {
+                padding: 15px 20px;
+            }
+            
+            .video-modal-header h3 {
+                font-size: 20px;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Effet de poussière magique -->
+    <div class="magic-dust" id="magicDust"></div>
+    
+    <!-- Particules éducatives spéciales -->
+    <div class="education-particles" id="educationParticles"></div>
+    
+    <!-- Étoiles scintillantes -->
+    <div class="twinkling-stars" id="twinklingStars"></div>
+    
+    <!-- Points colorés décoratifs -->
+    <div class="decorative-dots" id="decorativeDots"></div>
+    
+    <!-- Livre décoratif -->
+    <div class="book-decoration"></div>
+    
+    <!-- En-tête avec logo et menu utilisateur -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <div class="education-icon">📚</div>
+                <h1 class="site-title">SDM Disney</h1>
+                <!-- Étincelles magiques -->
+                <div class="magic-sparkle" style="top: 10px; right: -5px; animation-delay: 0.2s;"></div>
+                <div class="magic-sparkle" style="bottom: 5px; left: 40px; animation-delay: 0.7s;"></div>
+                <div class="magic-sparkle" style="top: 30px; left: 10px; animation-delay: 1.3s;"></div>
+            </a>
+            
+            <div class="user-menu-container">
+                <!-- Boutons de connexion/inscription (visible quand non connecté) -->
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn-login" id="openLoginModal">Se connecter</button>
+                    <button class="btn-signup" id="openSignupModal">S'inscrire</button>
+                </div>
+                
+                <!-- Info utilisateur (visible quand connecté) -->
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span id="userName">Utilisateur</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                
+                <!-- Menu déroulant utilisateur style Glass iOS -->
+                <div class="user-dropdown-menu" id="userDropdown">
+                    <ul>
+                        <li onclick="navigateTo('profil.html')">
+                            <i class="fas fa-user"></i>
+                            <span>Mon profil</span>
+                        </li>
+                        <li onclick="navigateTo('favoris.html')">
+                            <i class="fas fa-heart"></i>
+                            <span>Favoris</span>
+                        </li>
+                        <li onclick="navigateTo('historique.html')">
+                            <i class="fas fa-history"></i>
+                            <span>Historique</span>
+                        </li>
+                        <li onclick="navigateTo('parametres.html')">
+                            <i class="fas fa-cog"></i>
+                            <span>Paramètres</span>
+                        </li>
+                        <li id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Déconnexion</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Barre de navigation avec menu déroulant des catégories -->
+        <div class="nav-container">
+            <nav class="nav-menu">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link active" id="categoriesDropdownToggle">Catégories <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 12px;"></i></a>
+                    <div class="dropdown-menu" id="categoriesDropdown">
+                        <a href="conte-fee.html" class="dropdown-item" data-category="conte">Conte de fée</a>
+                        <a href="aventure.html" class="dropdown-item" data-category="aventure">Aventure&Action</a>
+                        <!-- <a href="comedie.html" class="dropdown-item" data-category="comedie">Comédie&Famille</a> -->
+                        <a href="enfants.html" class="dropdown-item active" data-category="enfants">Education</a>
+                        <!-- <a href="famille.html" class="dropdown-item" data-category="famille">Famille</a> -->
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Section de bannière pour Éducation -->
+    <section class="category-hero">
+        <h1>Éducation</h1>
+        <p>Apprendre en s'amusant ! Découvrez une sélection de dessins animés éducatifs qui stimulent la curiosité, développent l'imagination et enseignent des valeurs importantes aux enfants de tous âges. Des aventures pédagogiques pour grandir en s'émerveillant.</p>
+        <button class="btn btn-primary" style="max-width: 280px;" id="watchTrailerBtn">Regarder la bande-annonce</button>
+    </section>
+    
+    <!-- Section des vidéos -->
+    <section class="videos-section">
+        <h2 class="section-title">Dessins animés éducatifs</h2>
+        <div class="videos-container" id="videosContainer">
+            <!-- Les vidéos seront chargées par JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Modal vidéo -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3 id="videoModalTitle">Titre de la vidéo</h3>
+                <span class="close-video-modal" id="closeVideoModal">&times;</span>
+            </div>
+            <div class="video-modal-body">
+                <div class="video-modal-iframe-container">
+                    <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-modal-info">
+                    <p id="videoModalDescription">Description de la vidéo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de connexion -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Connexion</h2>
+                <span class="close-modal" id="closeLoginModal">&times;</span>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                    <div class="error-message" id="loginEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" required>
+                    <div class="error-message" id="loginPasswordError"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+                
+                <div class="divider">
+                    <span>Ou continuer avec</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn btn-google" id="googleLoginBtn">
+                        <i class="fab fa-google"></i>
+                        Continuer avec Google
+                    </button>
+                    <button type="button" class="social-btn btn-apple" id="appleLoginBtn">
+                        <i class="fab fa-apple"></i>
+                        Continuer avec Apple
+                    </button>
+                </div>
+                
+                <div class="form-switch">
+                    Pas encore de compte ? <a href="#" id="switchToSignup">S'inscrire</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal d'inscription -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Inscription</h2>
+                <span class="close-modal" id="closeSignupModal">&times;</span>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Nom complet</label>
+                    <input type="text" id="signupName" required>
+                    <div class="error-message" id="signupNameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                    <div class="error-message" id="signupEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Mot de passe</label>
+                    <input type="password" id="signupPassword" required>
+                    <div class="error-message" id="signupPasswordError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirmer le mot de passe</label>
+                    <input type="password" id="signupConfirmPassword" required>
+                    <div class="error-message" id="signupConfirmPasswordError"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+                
+                <div class="divider">
+                    <span>Ou s'inscrire avec</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn btn-google" id="googleSignupBtn">
+                        <i class="fab fa-google"></i>
+                        S'inscrire avec Google
+                    </button>
+                    <button type="button" class="social-btn btn-apple" id="appleSignupBtn">
+                        <i class="fab fa-apple"></i>
+                        S'inscrire avec Apple
+                    </button>
+                </div>
+                
+                <div class="form-switch">
+                    Déjà un compte ? <a href="#" id="switchToLogin">Se connecter</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Pied de page -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>À propos de SDM Disney</h3>
+                <p>SDM Disney est une plateforme qui regroupe les meilleurs dessins animés pour toute la famille. Profitez de contenu adapté à tous les âges et tous les goûts.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Catégories</h3>
+                <ul>
+                    <li><a href="conte-fee.html">Contes de fée</a></li>
+                    <li><a href="aventure.html">Aventure&Action</a></li>
+                    <li><a href="comedie.html">Comédie&Famille</a></li>
+                    <li><a href="enfants.html">Education</a></li>
+                    <!-- <li><a href="famille.html">Famille</a></li> -->
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@sdmdisney.com</p>
+                <p>Téléphone: +33 1 23 45 67 89</p>
+                <p>Adresse: 123 Avenue Disney, 77000 Paris</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 SDM Disney. Tous droits réservés. Conçu avec ❤️ pour les familles</p>
+        </div>
+    </footer>
+
+    <script>
+        // Données des vidéos pour la catégorie "Éducation"
+        const educationVideos = [
+            {
+                id: "V1bFr2SWP1I",
+                title: "Il était une fois... la Vie",
+                description: "Découvrez le fonctionnement du corps humain à travers des aventures éducatives. Une série classique qui enseigne la biologie aux enfants de manière ludique.",
+                duration: "26:15",
+                year: "1987"
+            },
+            {
+                id: "0sRvkZ1LIE4",
+                title: "C'est pas sorcier",
+                description: "Fred, Jamy et Sabine explorent les sciences et les technologies dans ce programme éducatif qui rend l'apprentissage passionnant et accessible.",
+                duration: "28:45",
+                year: "1994"
+            },
+            {
+                id: "hXzcyx9V0xw",
+                title: "Le Petit Prince",
+                description: "Adaptation de l'œuvre d'Antoine de Saint-Exupéry. Des histoires poétiques qui enseignent les valeurs d'amitié, de responsabilité et de curiosité.",
+                duration: "1:28:21",
+                year: "2015"
+            },
+            {
+                id: "S8_YwFLCh4U",
+                title: "Les Aventures de Tintin",
+                description: "Le jeune reporter Tintin et son fidèle chien Milou voyagent à travers le monde, résolvant des mystères et apprenant sur différentes cultures.",
+                duration: "1:30:00",
+                year: "2011"
+            },
+            {
+                id: "cStU-R0l72w",
+                title: "Sciences et Découvertes avec Pat",
+                description: "Pat explore le monde des sciences naturelles, de la physique aux phénomènes météorologiques, avec des expériences amusantes et instructives.",
+                duration: "24:30",
+                year: "2018"
+            },
+            {
+                id: "i8rLZ8_JCqw",
+                title: "Mathématiques Magiques",
+                description: "Une série animée qui rend les mathématiques amusantes à travers des aventures fantastiques où les nombres et les formes prennent vie.",
+                duration: "22:10",
+                year: "2020"
+            },
+            {
+                id: "r5X-hFf6Bwo",
+                title: "Apprendre l'Anglais avec Disney",
+                description: "Des personnages Disney emblématiques aident les enfants à apprendre l'anglais à travers des chansons, des jeux et des histoires interactives.",
+                duration: "1:40:15",
+                year: "2010"
+            },
+            {
+                id: "mYfJxlgRJG0",
+                title: "Le Monde des Dinosaures",
+                description: "Voyagez dans le temps à l'ère des dinosaures et découvrez ces créatures fascinantes à travers des animations réalistes et des faits scientifiques.",
+                duration: "1:15:45",
+                year: "2019"
+            },
+            {
+                id: "8IdczpU3Eyg",
+                title: "Les Planètes et l'Espace",
+                description: "Une exploration captivante de notre système solaire, des étoiles et des galaxies, parfaite pour éveiller la curiosité scientifique des enfants.",
+                duration: "1:20:30",
+                year: "2021"
+            },
+            {
+                id: "Ks-_Mh1QhMc",
+                title: "Histoires pour Grandir",
+                description: "Des contes moraux qui enseignent aux enfants des valeurs importantes comme le partage, l'honnêteté, le courage et la persévérance.",
+                duration: "1:35:00",
+                year: "2017"
+            },
+            {
+                id: "GcNiKCmWdYE",
+                title: "Les Mystères de l'Histoire",
+                description: "Découvrez les civilisations anciennes, les grandes inventions et les personnages historiques qui ont façonné notre monde.",
+                duration: "1:55:41",
+                year: "2016"
+            },
+            {
+                id: "t3g5pNEiFfM",
+                title: "L'Art et la Créativité",
+                description: "Initiation aux différentes formes d'art, de la peinture à la sculpture, en passant par la musique et la danse.",
+                duration: "1:32:12",
+                year: "2018"
+            },
+            {
+                id: "dLmKio67pVQ",
+                title: "La Nature et les Animaux",
+                description: "Explorez les écosystèmes du monde entier et apprenez à connaître les animaux dans leur habitat naturel.",
+                duration: "1:27:20",
+                year: "2019"
+            },
+            {
+                id: "AwrYhJ6ZpVY",
+                title: "Les Sciences en S'Amusant",
+                description: "Expériences scientifiques simples et sécuritaires que les enfants peuvent reproduire à la maison pour comprendre les principes de base de la physique et de la chimie.",
+                duration: "1:42:08",
+                year: "2020"
+            },
+            {
+                id: "oKiYuIsPxYk",
+                title: "Géographie Aventurière",
+                description: "Tour du monde animé pour découvrir les pays, leurs cultures, leurs langues et leurs traditions.",
+                duration: "1:48:31",
+                year: "2017"
+            },
+            {
+                id: "JfF4K9p_mvM",
+                title: "Les Émotions et les Sentiments",
+                description: "Une série qui aide les enfants à identifier, comprendre et exprimer leurs émotions de manière saine et constructive.",
+                duration: "1:25:00",
+                year: "2021"
+            },
+            {
+                id: "v7PGP1Ht8XQ",
+                title: "L'Écologie et la Protection de l'Environnement",
+                description: "Apprenez l'importance de prendre soin de notre planète à travers des histoires sur le recyclage, la conservation et la biodiversité.",
+                duration: "1:17:00",
+                year: "2022"
+            },
+            {
+                id: "gsq2GQHfM4I",
+                title: "Les Inventions et les Découvertes",
+                description: "L'histoire des grandes inventions qui ont changé le monde, présentée de manière ludique et éducative.",
+                duration: "1:30:50",
+                year: "2018"
+            }
+        ];
+
+        // Variables globales
+        let currentUser = null;
+
+        // Initialisation lorsque la page est chargée
+        document.addEventListener('DOMContentLoaded', function() {
+            // Créer les effets visuels
+            createMagicDust();
+            createEducationParticles();
+            createTwinklingStars();
+            createDecorativeDots();
+            
+            // Charger les vidéos
+            loadVideos();
+            
+            // Configurer les interactions
+            setupInteractions();
+            
+            // Configurer l'authentification
+            setupAuthentication();
+            
+            // Configurer la modal vidéo
+            setupVideoModal();
+            
+            // Vérifier si un utilisateur est déjà connecté (depuis localStorage)
+            checkLoggedInUser();
+            
+            // Précharger les images pour une meilleure fluidité
+            preloadImages();
+        });
+
+        // Vérifier si un utilisateur est connecté dans localStorage
+        function checkLoggedInUser() {
+            const savedUser = localStorage.getItem('sdmDisneyUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUserInterface();
+                showNotification(`Bon retour ${currentUser.displayName} !`, 'success');
+            }
+        }
+
+        // Créer la poussière magique en arrière-plan
+        function createMagicDust() {
+            const container = document.getElementById('magicDust');
+            const particleCount = 150;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('dust-particle');
+                
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                particle.style.animationDuration = `${10 + Math.random() * 20}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Créer les particules éducatives spéciales
+        function createEducationParticles() {
+            const container = document.getElementById('educationParticles');
+            const particleCount = 80;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('education-particle');
+                
+                const size = Math.random() * 8 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                const colors = ['#ffd54f', '#7b1fa2', '#43a047', '#00897b'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.backgroundColor = color;
+                particle.style.boxShadow = `0 0 15px 3px ${color}`;
+                
+                particle.style.animationDelay = `${Math.random() * 12}s`;
+                particle.style.animationDuration = `${8 + Math.random() * 16}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Créer les étoiles scintillantes
+        function createTwinklingStars() {
+            const container = document.getElementById('twinklingStars');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                star.style.animationDuration = `${1 + Math.random() * 4}s`;
+                
+                container.appendChild(star);
+            }
+        }
+
+        // Créer les points colorés décoratifs
+        function createDecorativeDots() {
+            const container = document.getElementById('decorativeDots');
+            const dotCount = 80;
+            const colors = ['#7b1fa2', '#43a047', '#ffd54f', '#1565c0', '#00897b', '#d81b60'];
+            
+            for (let i = 0; i < dotCount; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                dot.style.backgroundColor = color;
+                dot.style.boxShadow = `0 0 10px ${color}`;
+                
+                const size = Math.random() * 10 + 3;
+                dot.style.width = `${size}px`;
+                dot.style.height = `${size}px`;
+                dot.style.left = `${Math.random() * 100}%`;
+                dot.style.top = `${Math.random() * 100}%`;
+                
+                dot.style.animationDelay = `${Math.random() * 20}s`;
+                dot.style.animationDuration = `${15 + Math.random() * 25}s`;
+                
+                container.appendChild(dot);
+            }
+        }
+
+        // Précharger les images pour une meilleure fluidité
+        function preloadImages() {
+            const imageUrls = [
+                'https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80'
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        }
+
+        // Charger les vidéos
+        function loadVideos() {
+            const container = document.getElementById('videosContainer');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            educationVideos.forEach((video, index) => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.setAttribute('data-video-id', video.id);
+                videoItem.setAttribute('data-video-title', video.title);
+                videoItem.setAttribute('data-video-description', video.description);
+                videoItem.style.animationDelay = `${index * 0.1}s`;
+                
+                const thumbnailUrl = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                
+                videoItem.innerHTML = `
+                    <div class="video-thumbnail">
+                        <img src="${thumbnailUrl}" alt="${video.title}" loading="lazy">
+                    </div>
+                    <div class="video-info">
+                        <h3>${video.title}</h3>
+                        <p>${video.description}</p>
+                        <div class="video-meta">
+                            <span><i class="far fa-clock"></i> ${video.duration}</span>
+                            <span><i class="far fa-calendar"></i> ${video.year}</span>
+                        </div>
+                    </div>
+                `;
+                
+                videoItem.addEventListener('click', function() {
+                    openVideoModal(video.id, video.title, video.description);
+                });
+                
+                container.appendChild(videoItem);
+            });
+        }
+
+        // Configurer les interactions
+        function setupInteractions() {
+            // Gérer le bouton "Regarder la bande-annonce"
+            const watchTrailerBtn = document.getElementById('watchTrailerBtn');
+            if (watchTrailerBtn) {
+                watchTrailerBtn.addEventListener('click', function() {
+                    openVideoModal(educationVideos[0].id, educationVideos[0].title, educationVideos[0].description);
+                });
+            }
+            
+            // Gérer le menu déroulant des catégories
+            const categoriesDropdownToggle = document.getElementById('categoriesDropdownToggle');
+            const categoriesDropdown = document.getElementById('categoriesDropdown');
+            
+            if (categoriesDropdownToggle) {
+                categoriesDropdownToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    categoriesDropdown.classList.toggle('active');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!categoriesDropdownToggle.contains(e.target) && !categoriesDropdown.contains(e.target)) {
+                        categoriesDropdown.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Configurer la modal vidéo
+        function setupVideoModal() {
+            const videoModal = document.getElementById('videoModal');
+            const closeVideoModal = document.getElementById('closeVideoModal');
+            
+            if (closeVideoModal) {
+                closeVideoModal.addEventListener('click', function() {
+                    closeVideoModalFunc();
+                });
+            }
+            
+            if (videoModal) {
+                videoModal.addEventListener('click', function(e) {
+                    if (e.target === videoModal) {
+                        closeVideoModalFunc();
+                    }
+                });
+            }
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                    closeVideoModalFunc();
+                }
+            });
+        }
+
+        // Ouvrir la modal vidéo
+        function openVideoModal(videoId, title, description) {
+            const videoModal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoModalTitle = document.getElementById('videoModalTitle');
+            const videoModalDescription = document.getElementById('videoModalDescription');
+            
+            if (!videoModal || !videoPlayer) return;
+            
+            videoModalTitle.textContent = title;
+            videoModalDescription.textContent = description;
+            
+            videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0`;
+            
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fermer la modal vidéo
+        function closeVideoModalFunc() {
+            const videoModal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            
+            if (!videoModal || !videoPlayer) return;
+            
+            videoModal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            videoPlayer.src = '';
+        }
+
+        // Configurer l'authentification
+        function setupAuthentication() {
+            // Éléments modaux
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            const openLoginModalBtn = document.getElementById('openLoginModal');
+            const openSignupModalBtn = document.getElementById('openSignupModal');
+            const closeLoginModalBtn = document.getElementById('closeLoginModal');
+            const closeSignupModalBtn = document.getElementById('closeSignupModal');
+            const switchToSignupLink = document.getElementById('switchToSignup');
+            const switchToLoginLink = document.getElementById('switchToLogin');
+            
+            // Ouvrir modaux
+            if (openLoginModalBtn) {
+                openLoginModalBtn.addEventListener('click', () => {
+                    loginModal.classList.add('active');
+                    signupModal.classList.remove('active');
+                });
+            }
+            
+            if (openSignupModalBtn) {
+                openSignupModalBtn.addEventListener('click', () => {
+                    signupModal.classList.add('active');
+                    loginModal.classList.remove('active');
+                });
+            }
+            
+            // Fermer modaux
+            if (closeLoginModalBtn) {
+                closeLoginModalBtn.addEventListener('click', () => {
+                    loginModal.classList.remove('active');
+                });
+            }
+            
+            if (closeSignupModalBtn) {
+                closeSignupModalBtn.addEventListener('click', () => {
+                    signupModal.classList.remove('active');
+                });
+            }
+            
+            // Basculer entre modaux
+            if (switchToSignupLink) {
+                switchToSignupLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginModal.classList.remove('active');
+                    signupModal.classList.add('active');
+                });
+            }
+            
+            if (switchToLoginLink) {
+                switchToLoginLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signupModal.classList.remove('active');
+                    loginModal.classList.add('active');
+                });
+            }
+            
+            // Fonction pour valider l'email
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Gestion de l'inscription
+            const signupForm = document.getElementById('signupForm');
+            if (signupForm) {
+                signupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('signupName').value;
+                    const email = document.getElementById('signupEmail').value;
+                    const password = document.getElementById('signupPassword').value;
+                    const confirmPassword = document.getElementById('signupConfirmPassword').value;
+                    
+                    // Validation côté client
+                    if (!isValidEmail(email)) {
+                        showNotification('Veuillez entrer une adresse email valide', 'error');
+                        return;
+                    }
+                    
+                    if (password !== confirmPassword) {
+                        showNotification('Les mots de passe ne correspondent pas', 'error');
+                        return;
+                    }
+                    
+                    if (password.length < 6) {
+                        showNotification('Le mot de passe doit contenir au moins 6 caractères', 'error');
+                        return;
+                    }
+                    
+                    // Créer l'utilisateur (simulation)
+                    const userId = 'user_' + Date.now();
+                    const user = {
+                        uid: userId,
+                        email: email,
+                        displayName: name,
+                        createdAt: new Date().toISOString()
+                    };
+                    
+                    // Sauvegarder l'utilisateur dans localStorage
+                    localStorage.setItem('sdmDisneyUser', JSON.stringify(user));
+                    
+                    // Mettre à jour l'interface
+                    currentUser = user;
+                    updateUserInterface();
+                    
+                    // Fermer le modal et réinitialiser le formulaire
+                    signupModal.classList.remove('active');
+                    signupForm.reset();
+                    
+                    showNotification('Compte créé avec succès !', 'success');
+                });
+            }
+            
+            // Gestion de la connexion
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+                    
+                    // Vérifier les identifiants (simulation)
+                    const savedUser = localStorage.getItem('sdmDisneyUser');
+                    
+                    if (savedUser) {
+                        const user = JSON.parse(savedUser);
+                        
+                        // Simulation de vérification
+                        if (user.email === email) {
+                            // Connexion réussie
+                            currentUser = user;
+                            updateUserInterface();
+                            
+                            loginModal.classList.remove('active');
+                            loginForm.reset();
+                            
+                            showNotification('Connexion réussie !', 'success');
+                        } else {
+                            showNotification('Email ou mot de passe incorrect', 'error');
+                        }
+                    } else {
+                        // Premier utilisateur - création automatique
+                        const userId = 'user_' + Date.now();
+                        const user = {
+                            uid: userId,
+                            email: email,
+                            displayName: email.split('@')[0],
+                            createdAt: new Date().toISOString()
+                        };
+                        
+                        localStorage.setItem('sdmDisneyUser', JSON.stringify(user));
+                        currentUser = user;
+                        updateUserInterface();
+                        
+                        loginModal.classList.remove('active');
+                        loginForm.reset();
+                        
+                        showNotification('Compte créé et connexion réussie !', 'success');
+                    }
+                });
+            }
+            
+            // Gestion de la déconnexion
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    // Supprimer l'utilisateur du localStorage
+                    localStorage.removeItem('sdmDisneyUser');
+                    currentUser = null;
+                    updateUserInterface();
+                    
+                    showNotification('Déconnexion réussie', 'info');
+                    const userDropdown = document.getElementById('userDropdown');
+                    if (userDropdown) {
+                        userDropdown.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Gestion du menu déroulant utilisateur
+            const userInfo = document.getElementById('userInfo');
+            const userDropdown = document.getElementById('userDropdown');
+            
+            if (userInfo) {
+                userInfo.addEventListener('click', () => {
+                    userDropdown.classList.toggle('active');
+                });
+                
+                // Fermer le menu déroulant en cliquant à l'extérieur
+                window.addEventListener('click', (e) => {
+                    if (!userInfo.contains(e.target) && !userDropdown.contains(e.target)) {
+                        userDropdown.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Navigation vers les pages
+            window.navigateTo = function(page) {
+                if (currentUser) {
+                    window.location.href = page;
+                } else {
+                    showNotification('Veuillez vous connecter pour accéder à cette page.', 'info');
+                    document.getElementById('loginModal').classList.add('active');
+                }
+            };
+            
+            // Fermer modaux en cliquant à l'extérieur
+            window.addEventListener('click', (e) => {
+                if (e.target === loginModal) {
+                    loginModal.classList.remove('active');
+                }
+                if (e.target === signupModal) {
+                    signupModal.classList.remove('active');
+                }
+            });
+        }
+
+        // Mettre à jour l'interface utilisateur en fonction de l'état de connexion
+        function updateUserInterface() {
+            const authButtons = document.getElementById('authButtons');
+            const userInfo = document.getElementById('userInfo');
+            const userAvatar = document.getElementById('userAvatar');
+            const userName = document.getElementById('userName');
+            
+            if (currentUser && userInfo) {
+                // Afficher les informations utilisateur
+                authButtons.style.display = 'none';
+                userInfo.style.display = 'flex';
+                
+                // Mettre à jour le nom et l'avatar
+                userName.textContent = currentUser.displayName;
+                
+                if (currentUser.photoURL) {
+                    userAvatar.innerHTML = `<img src="${currentUser.photoURL}" alt="${currentUser.displayName}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+                } else {
+                    userAvatar.textContent = currentUser.displayName.charAt(0).toUpperCase();
+                    
+                    // Ajouter une couleur d'avatar basée sur le nom
+                    const colors = ['#7b1fa2', '#43a047', '#ffd54f', '#00897b', '#1565c0'];
+                    const colorIndex = currentUser.displayName.length % colors.length;
+                    userAvatar.style.background = `linear-gradient(135deg, ${colors[colorIndex]}, ${colors[(colorIndex + 1) % colors.length]})`;
+                }
+            } else if (authButtons) {
+                // Afficher les boutons d'authentification
+                authButtons.style.display = 'flex';
+                if (userInfo) userInfo.style.display = 'none';
+            }
+        }
+
+        // Afficher une notification
+        function showNotification(message, type) {
+            // Créer l'élément de notification
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            // Styles de la notification
+            notification.style.position = 'fixed';
+            notification.style.top = '30px';
+            notification.style.right = '30px';
+            notification.style.padding = '15px 25px';
+            notification.style.borderRadius = '10px';
+            notification.style.color = 'white';
+            notification.style.fontWeight = '600';
+            notification.style.zIndex = '9999';
+            notification.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            notification.style.animation = 'slideInRight 0.3s ease-out';
+            
+            // Couleur selon le type
+            if (type === 'success') {
+                notification.style.background = 'linear-gradient(45deg, #2ecc71, #27ae60)';
+                notification.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            } else if (type === 'error') {
+                notification.style.background = 'linear-gradient(45deg, #e74c3c, #c0392b)';
+                notification.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            } else {
+                notification.style.background = 'linear-gradient(45deg, #3498db, #2980b9)';
+                notification.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            }
+            
+            // Ajouter au document
+            document.body.appendChild(notification);
+            
+            // Supprimer après 5 secondes
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease-out';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+            
+            // Ajouter les keyframes pour l'animation
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideInRight {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOutRight {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+    </script>
+</body>
+</html>
